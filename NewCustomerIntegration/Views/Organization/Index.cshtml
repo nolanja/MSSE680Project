@@ -1,0 +1,105 @@
+﻿@model IEnumerable<NewCustomerIntegration.Domain.Models.Organization>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrganizationCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrganizationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FaxNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentOrganizationCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Theme)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Skin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DELETED)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrganizationCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrganizationName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FaxNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParentOrganizationCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Theme)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Skin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DELETED)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedBy)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OrganizationId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OrganizationId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OrganizationId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,78 @@
+﻿@model NewCustomerIntegration.Domain.Models.Site
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Site</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Organization.OrganizationCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Organization.OrganizationCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SiteType.SiteTypeName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SiteType.SiteTypeName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SiteName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SiteName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SiteCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SiteCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TimeZoneId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TimeZoneId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreatedDateTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedDateTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreatedBy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedBy)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ModifiedDateTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ModifiedDateTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ModifiedBy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ModifiedBy)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.SiteId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
