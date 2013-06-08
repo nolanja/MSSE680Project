@@ -208,6 +208,11 @@
     <Compile Include="Services\AddressService.cs" />
     <Compile Include="Services\INewCustomerService.cs" />
     <Compile Include="Services\OrganizationService.cs" />
+    <Compile Include="Services\PersonService.cs" />
+    <Compile Include="Services\RuleService.cs" />
+    <Compile Include="Services\SiteService.cs" />
+    <Compile Include="Services\SiteTypeService.cs" />
+    <Compile Include="Services\UserTypeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\animated-overlay.gif" />

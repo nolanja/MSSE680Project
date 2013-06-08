@@ -22,7 +22,7 @@ namespace NewCustomerIntegration.Services
              return organizations.ToList();
          }
 
-         public Organization OrganizationDetails(long id = 0)
+         public Organization OrganizationDetails(long id)
          {
              return this.customerDB.Organizations.Find(id);
          }
@@ -33,7 +33,7 @@ namespace NewCustomerIntegration.Services
             this.customerDB.SaveChanges();
         }
 
-        public Organization OrganizationEdit(long id = 0)
+        public Organization OrganizationEdit(long id)
         {
            return this.customerDB.Organizations.Find(id);
         }
@@ -44,7 +44,7 @@ namespace NewCustomerIntegration.Services
             this.customerDB.SaveChanges();
         }
 
-        public Organization OrganizationDelete(long id = 0)
+        public Organization OrganizationDelete(long id)
         {
             return this.customerDB.Organizations.Find(id);
         }
