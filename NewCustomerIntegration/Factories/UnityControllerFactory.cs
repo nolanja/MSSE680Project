@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using System.Web.Routing;
+using NewCustomerIntegration.Domain.Models;
+using NewCustomerIntegration.Controllers;
+using NewCustomerIntegration.Services;
 
 namespace NewCustomerIntegration.Factories
 {

@@ -14,10 +14,9 @@ namespace NewCustomerIntegration.Services
     {
         DBIntegrationContext customerDB = new DBIntegrationContext();
 
-        public IList<long> GetRules()
+        public IList<NewCustomerIntegration.Domain.Models.Rule> GetRules()
         {
-            var rules = from rule in customerDB.Rules
-                        select rule.RuleId;
+            var rules = customerDB.Rules;
 
             return rules.ToList();
         }

@@ -14,11 +14,9 @@ namespace NewCustomerIntegration.Services
     {
          DBIntegrationContext customerDB = new DBIntegrationContext();
 
-         public IList<string> GetOrganizationNames()
+         public IList<Organization> GetOrganizationNames()
          {
-             var organizations = from organization in customerDB.Organizations
-                                 select organization.OrganizationName;
-
+             var organizations = customerDB.Organizations;
              return organizations.ToList();
          }
 

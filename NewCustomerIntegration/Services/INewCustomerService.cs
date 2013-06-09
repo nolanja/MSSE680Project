@@ -9,7 +9,7 @@ namespace NewCustomerIntegration.Services
     public interface INewCustomerOrganizationService
     {
         // Organization Service Interfaces
-        IList<string> GetOrganizationNames();
+        IList<Organization> GetOrganizationNames();
         Organization OrganizationDetails(long id);
         void OrganizationCreate(Organization organization);
         Organization OrganizationEdit(long id);
@@ -36,6 +36,7 @@ namespace NewCustomerIntegration.Services
 
     public interface INewCustomerPersonService
     {
+        // Person Service Interfaces
         System.Collections.Generic.IList<NewCustomerIntegration.Domain.Models.Person> GetPeople();
         void PeopleDispose(bool disposing);
         void PersonCreate(NewCustomerIntegration.Domain.Models.Person person);
@@ -52,6 +53,7 @@ namespace NewCustomerIntegration.Services
 
     public interface INewCustomerSiteService
     {
+        // Site Service Interfaces
         System.Collections.Generic.IList<NewCustomerIntegration.Domain.Models.Site> GetSites();
         dynamic SiteCreateOrganizationIDKey();
         dynamic SiteCreateSiteTypeIDKey();
@@ -68,7 +70,8 @@ namespace NewCustomerIntegration.Services
 
     public interface INewCustomerSiteTypeService
     {
-        System.Collections.Generic.IList<long> GetSiteTypes();
+        // Site Type Service Interfaces
+        System.Collections.Generic.IList<NewCustomerIntegration.Domain.Models.SiteType> GetSiteTypes();
         void SiteTypeCreate(NewCustomerIntegration.Domain.Models.SiteType sitetype);
         NewCustomerIntegration.Domain.Models.SiteType SiteTypeDelete(long id);
         void SiteTypeDeleteConfirmed(long id);
@@ -80,7 +83,8 @@ namespace NewCustomerIntegration.Services
 
     public interface INewCustomerUserTypeService
     {
-        System.Collections.Generic.IList<long> GetUserTypes();
+        // User Type Service Interfaces
+        System.Collections.Generic.IList<NewCustomerIntegration.Domain.Models.UserType> GetUserTypes();
         void UserTypeCreate(NewCustomerIntegration.Domain.Models.UserType usertype);
         NewCustomerIntegration.Domain.Models.UserType UserTypeDelete(long id);
         void UserTypeDeleteConfirmed(long id);
@@ -92,7 +96,8 @@ namespace NewCustomerIntegration.Services
 
     public interface INewCustomerRuleService
     {
-        System.Collections.Generic.IList<long> GetRules();
+        // Rule Service Interfaces
+        System.Collections.Generic.IList<NewCustomerIntegration.Domain.Models.Rule> GetRules();
         void RuleCreate(NewCustomerIntegration.Domain.Models.Rule rule);
         NewCustomerIntegration.Domain.Models.Rule RuleDelete(long id);
         void RuleDeleteConfirmed(long id);

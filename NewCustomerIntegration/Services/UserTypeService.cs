@@ -14,10 +14,9 @@ namespace NewCustomerIntegration.Services
     {
         DBIntegrationContext customerDB = new DBIntegrationContext();
 
-        public IList<long> GetUserTypes()
+        public IList<UserType> GetUserTypes()
         {
-            var usertypes = from usertype in customerDB.UserTypes
-                            select usertype.UserTypeId;
+            var usertypes = customerDB.UserTypes;
 
             return usertypes.ToList();
         }

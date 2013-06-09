@@ -14,10 +14,9 @@ namespace NewCustomerIntegration.Services
     {
         DBIntegrationContext customerDB = new DBIntegrationContext();
 
-        public IList<long> GetSiteTypes()
+        public IList<SiteType> GetSiteTypes()
         {
-            var sitetypes = from sitetype in customerDB.SiteTypes
-                                select sitetype.SiteTypeId;
+            var sitetypes = customerDB.SiteTypes;
 
             return sitetypes.ToList();
         }
