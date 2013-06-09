@@ -5,21 +5,27 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NewCustomerIntegration.Services;
 using NewCustomerIntegration.Domain.Models;
 
 namespace NewCustomerIntegration.Controllers
 {
     public class AddressController : Controller
     {
-        private DBIntegrationContext db = new DBIntegrationContext();
+        //private DBIntegrationContext db = new DBIntegrationContext();
+        private INewCustomerAddressService service;
+
+        public AddressController(INewCustomerAddressService service)
+        {
+            this.service = service;
+        }
 
         //
         // GET: /Address/
 
         public ActionResult Index()
         {
-            var addresses = db.Addresses.Include(a => a.Site);
-            return View(addresses.ToList());
+            return View(this.service.GetAddresses());
         }
 
         //
@@ -27,7 +33,7 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Details(long id = 0)
         {
-            Address address = db.Addresses.Find(id);
+            Address address = this.service.AddressDetails(id);
             if (address == null)
             {
                 return HttpNotFound();
@@ -40,7 +46,7 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.SiteId = new SelectList(db.Sites, "SiteId", "SiteName");
+            ViewBag.SiteId = this.service.AddressCreateSiteKey();
             return View();
         }
 
@@ -53,12 +59,11 @@ namespace NewCustomerIntegration.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Addresses.Add(address);
-                db.SaveChanges();
+                this.service.AddressCreate(address);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.SiteId = new SelectList(db.Sites, "SiteId", "SiteName", address.SiteId);
+            ViewBag.SiteId = this.service.AddressWriteSiteKey(address);
             return View(address);
         }
 
@@ -67,12 +72,12 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Edit(long id = 0)
         {
-            Address address = db.Addresses.Find(id);
+            Address address = this.service.AddressEdit(id);
             if (address == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.SiteId = new SelectList(db.Sites, "SiteId", "SiteName", address.SiteId);
+            ViewBag.SiteId = this.service.AddressWriteSiteKey(address);
             return View(address);
         }
 
@@ -85,11 +90,10 @@ namespace NewCustomerIntegration.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(address).State = EntityState.Modified;
-                db.SaveChanges();
+                this.service.AddressEdit(address);
                 return RedirectToAction("Index");
             }
-            ViewBag.SiteId = new SelectList(db.Sites, "SiteId", "SiteName", address.SiteId);
+            ViewBag.SiteId = this.service.AddressWriteSiteKey(address);
             return View(address);
         }
 
@@ -98,7 +102,7 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Delete(long id = 0)
         {
-            Address address = db.Addresses.Find(id);
+            Address address = this.service.AddressDelete(id);
             if (address == null)
             {
                 return HttpNotFound();
@@ -113,15 +117,13 @@ namespace NewCustomerIntegration.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            Address address = db.Addresses.Find(id);
-            db.Addresses.Remove(address);
-            db.SaveChanges();
+            this.service.AddressDeleteConfirmed(id);
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            this.service.AddressDispose(disposing);
             base.Dispose(disposing);
         }
     }

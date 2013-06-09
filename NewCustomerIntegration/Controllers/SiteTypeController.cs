@@ -5,20 +5,25 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NewCustomerIntegration.Services;
 using NewCustomerIntegration.Domain.Models;
 
 namespace NewCustomerIntegration.Controllers
 {
     public class SiteTypeController : Controller
     {
-        private DBIntegrationContext db = new DBIntegrationContext();
-
+        //private DBIntegrationContext db = new DBIntegrationContext();
+        private INewCustomerSiteTypeService service;
+        public SiteTypeController(INewCustomerSiteTypeService service)
+        {
+            this.service = service;
+        }
         //
         // GET: /Default1/
 
         public ActionResult Index()
         {
-            return View(db.SiteTypes.ToList());
+            return View(this.service.GetSiteTypes());
         }
 
         //
@@ -26,7 +31,7 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Details(long id = 0)
         {
-            SiteType sitetype = db.SiteTypes.Find(id);
+            SiteType sitetype = this.service.SiteTypeDetails(id);
             if (sitetype == null)
             {
                 return HttpNotFound();
@@ -51,8 +56,7 @@ namespace NewCustomerIntegration.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.SiteTypes.Add(sitetype);
-                db.SaveChanges();
+                this.service.SiteTypeCreate(sitetype);
                 return RedirectToAction("Index");
             }
 
@@ -64,7 +68,7 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Edit(long id = 0)
         {
-            SiteType sitetype = db.SiteTypes.Find(id);
+            SiteType sitetype = this.service.SiteTypeEdit(id);
             if (sitetype == null)
             {
                 return HttpNotFound();
@@ -81,8 +85,7 @@ namespace NewCustomerIntegration.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(sitetype).State = EntityState.Modified;
-                db.SaveChanges();
+                this.service.SiteTypeEdit(sitetype);
                 return RedirectToAction("Index");
             }
             return View(sitetype);
@@ -93,7 +96,7 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Delete(long id = 0)
         {
-            SiteType sitetype = db.SiteTypes.Find(id);
+            SiteType sitetype = this.service.SiteTypeDelete(id);
             if (sitetype == null)
             {
                 return HttpNotFound();
@@ -108,15 +111,13 @@ namespace NewCustomerIntegration.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            SiteType sitetype = db.SiteTypes.Find(id);
-            db.SiteTypes.Remove(sitetype);
-            db.SaveChanges();
+            this.service.SiteTypeDeleteConfirmed(id);
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            this.service.SiteTypeDispose(disposing);
             base.Dispose(disposing);
         }
     }

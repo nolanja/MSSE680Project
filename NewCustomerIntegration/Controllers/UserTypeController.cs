@@ -5,20 +5,25 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NewCustomerIntegration.Services;
 using NewCustomerIntegration.Domain.Models;
 
 namespace NewCustomerIntegration.Controllers
 {
     public class UserTypeController : Controller
     {
-        private DBIntegrationContext db = new DBIntegrationContext();
-
+        //private DBIntegrationContext db = new DBIntegrationContext();
+        private INewCustomerUserTypeService service;
+        public UserTypeController(INewCustomerUserTypeService service)
+        {
+            this.service = service;
+        }
         //
         // GET: /UserType/
 
         public ActionResult Index()
         {
-            return View(db.UserTypes.ToList());
+            return View(this.service.GetUserTypes());
         }
 
         //
@@ -26,7 +31,7 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Details(long id = 0)
         {
-            UserType usertype = db.UserTypes.Find(id);
+            UserType usertype = this.service.UserTypeDetails(id);
             if (usertype == null)
             {
                 return HttpNotFound();
@@ -51,8 +56,7 @@ namespace NewCustomerIntegration.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.UserTypes.Add(usertype);
-                db.SaveChanges();
+                this.service.UserTypeCreate(usertype);
                 return RedirectToAction("Index");
             }
 
@@ -64,7 +68,7 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Edit(long id = 0)
         {
-            UserType usertype = db.UserTypes.Find(id);
+            UserType usertype = this.service.UserTypeEdit(id);
             if (usertype == null)
             {
                 return HttpNotFound();
@@ -81,8 +85,7 @@ namespace NewCustomerIntegration.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(usertype).State = EntityState.Modified;
-                db.SaveChanges();
+                this.service.UserTypeEdit(usertype);
                 return RedirectToAction("Index");
             }
             return View(usertype);
@@ -93,7 +96,7 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Delete(long id = 0)
         {
-            UserType usertype = db.UserTypes.Find(id);
+            UserType usertype = this.service.UserTypeDelete(id);
             if (usertype == null)
             {
                 return HttpNotFound();
@@ -108,15 +111,13 @@ namespace NewCustomerIntegration.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            UserType usertype = db.UserTypes.Find(id);
-            db.UserTypes.Remove(usertype);
-            db.SaveChanges();
+            this.service.UserTypeDeleteConfirmed(id);
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            this.service.UserTypeDispose(disposing);
             base.Dispose(disposing);
         }
     }

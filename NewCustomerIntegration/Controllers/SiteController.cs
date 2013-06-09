@@ -5,20 +5,25 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NewCustomerIntegration.Services;
 using NewCustomerIntegration.Domain.Models;
 
 namespace NewCustomerIntegration.Controllers
 {
     public class SiteController : Controller
     {
-        private DBIntegrationContext db = new DBIntegrationContext();
-
+        //private DBIntegrationContext db = new DBIntegrationContext();
+        private INewCustomerSiteService service;
+        public SiteController(INewCustomerSiteService service)
+        {
+            this.service = service;
+        }
         //
         // GET: /Site/
 
         public ActionResult Index()
         {
-            var sites = db.Sites.Include(s => s.Organization).Include(s => s.SiteType);
+            var sites = this.service.GetSites();
             return View(sites.ToList());
         }
 
@@ -27,7 +32,7 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Details(long id = 0)
         {
-            Site site = db.Sites.Find(id);
+            Site site = this.service.SiteDetails(id);
             if (site == null)
             {
                 return HttpNotFound();
@@ -40,8 +45,8 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.OrganizationId = new SelectList(db.Organizations, "OrganizationId", "OrganizationCode");
-            ViewBag.SiteTypeId = new SelectList(db.SiteTypes, "SiteTypeId", "SiteTypeName");
+            ViewBag.OrganizationId = this.service.SiteCreateOrganizationIDKey();
+            ViewBag.SiteTypeId = this.service.SiteCreateSiteTypeIDKey();
             return View();
         }
 
@@ -54,13 +59,12 @@ namespace NewCustomerIntegration.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Sites.Add(site);
-                db.SaveChanges();
+                this.service.SiteCreate(site);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.OrganizationId = new SelectList(db.Organizations, "OrganizationId", "OrganizationCode", site.OrganizationId);
-            ViewBag.SiteTypeId = new SelectList(db.SiteTypes, "SiteTypeId", "SiteTypeName", site.SiteTypeId);
+            ViewBag.OrganizationId = this.service.SiteWriteOrganizationIDKey(site);
+            ViewBag.SiteTypeId = this.service.SiteWriteSiteTypeIDKey(site);
             return View(site);
         }
 
@@ -69,13 +73,13 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Edit(long id = 0)
         {
-            Site site = db.Sites.Find(id);
+            Site site = this.service.SiteEdit(id);
             if (site == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.OrganizationId = new SelectList(db.Organizations, "OrganizationId", "OrganizationCode", site.OrganizationId);
-            ViewBag.SiteTypeId = new SelectList(db.SiteTypes, "SiteTypeId", "SiteTypeName", site.SiteTypeId);
+            ViewBag.OrganizationId = this.service.SiteWriteOrganizationIDKey(site);
+            ViewBag.SiteTypeId = this.service.SiteWriteSiteTypeIDKey(site);
             return View(site);
         }
 
@@ -88,12 +92,11 @@ namespace NewCustomerIntegration.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(site).State = EntityState.Modified;
-                db.SaveChanges();
+                this.service.SiteEdit(site);
                 return RedirectToAction("Index");
             }
-            ViewBag.OrganizationId = new SelectList(db.Organizations, "OrganizationId", "OrganizationCode", site.OrganizationId);
-            ViewBag.SiteTypeId = new SelectList(db.SiteTypes, "SiteTypeId", "SiteTypeName", site.SiteTypeId);
+            ViewBag.OrganizationId = this.service.SiteWriteOrganizationIDKey(site);
+            ViewBag.SiteTypeId = this.service.SiteWriteSiteTypeIDKey(site);
             return View(site);
         }
 
@@ -102,7 +105,7 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Delete(long id = 0)
         {
-            Site site = db.Sites.Find(id);
+            Site site = this.service.SiteDelete(id);
             if (site == null)
             {
                 return HttpNotFound();
@@ -117,15 +120,13 @@ namespace NewCustomerIntegration.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            Site site = db.Sites.Find(id);
-            db.Sites.Remove(site);
-            db.SaveChanges();
+            this.service.SiteDeleteConfirmed(id);
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            this.service.SiteDispose(disposing);
             base.Dispose(disposing);
         }
     }

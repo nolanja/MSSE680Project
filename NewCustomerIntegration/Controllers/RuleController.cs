@@ -5,20 +5,25 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NewCustomerIntegration.Services;
 using NewCustomerIntegration.Domain.Models;
 
 namespace NewCustomerIntegration.Controllers
 {
     public class RuleController : Controller
     {
-        private DBIntegrationContext db = new DBIntegrationContext();
-
+        //private DBIntegrationContext db = new DBIntegrationContext();
+        private INewCustomerRuleService service;
+        public RuleController(INewCustomerRuleService service)
+        {
+            this.service = service;
+        }
         //
         // GET: /Rule/
 
         public ActionResult Index()
         {
-            return View(db.Rules.ToList());
+            return View(this.service.GetRules());
         }
 
         //
@@ -26,7 +31,7 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Details(long id = 0)
         {
-            NewCustomerIntegration.Domain.Models.Rule rule = db.Rules.Find(id);
+            NewCustomerIntegration.Domain.Models.Rule rule = this.service.RuleDetails(id);
             if (rule == null)
             {
                 return HttpNotFound();
@@ -51,8 +56,7 @@ namespace NewCustomerIntegration.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Rules.Add(rule);
-                db.SaveChanges();
+                this.service.RuleCreate(rule);
                 return RedirectToAction("Index");
             }
 
@@ -64,7 +68,7 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Edit(long id = 0)
         {
-            NewCustomerIntegration.Domain.Models.Rule rule = db.Rules.Find(id);
+            NewCustomerIntegration.Domain.Models.Rule rule = this.service.RuleEdit(id);
             if (rule == null)
             {
                 return HttpNotFound();
@@ -81,8 +85,7 @@ namespace NewCustomerIntegration.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(rule).State = EntityState.Modified;
-                db.SaveChanges();
+                this.service.RuleEdit(rule);
                 return RedirectToAction("Index");
             }
             return View(rule);
@@ -93,7 +96,7 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Delete(long id = 0)
         {
-            NewCustomerIntegration.Domain.Models.Rule rule = db.Rules.Find(id);
+            NewCustomerIntegration.Domain.Models.Rule rule = this.service.RuleDelete(id);
             if (rule == null)
             {
                 return HttpNotFound();
@@ -108,15 +111,13 @@ namespace NewCustomerIntegration.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            NewCustomerIntegration.Domain.Models.Rule rule = db.Rules.Find(id);
-            db.Rules.Remove(rule);
-            db.SaveChanges();
+            this.service.RuleDeleteConfirmed(id);
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            this.service.RuleDispose(disposing);
             base.Dispose(disposing);
         }
     }

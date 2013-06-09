@@ -5,21 +5,26 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NewCustomerIntegration.Services;
 using NewCustomerIntegration.Domain.Models;
 
 namespace NewCustomerIntegration.Controllers
 {
     public class PersonController : Controller
     {
-        private DBIntegrationContext db = new DBIntegrationContext();
+        //private DBIntegrationContext db = new DBIntegrationContext();
+        private INewCustomerPersonService service;
+        public PersonController(INewCustomerPersonService service)
+        {
+            this.service = service;
+        }
 
         //
         // GET: /Person/
 
         public ActionResult Index()
         {
-            var people = db.People.Include(p => p.Organization).Include(p => p.UserType);
-            return View(people.ToList());
+            return View(this.service.GetPeople());
         }
 
         //
@@ -27,7 +32,7 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Details(long id = 0)
         {
-            Person person = db.People.Find(id);
+            Person person = this.service.PersonDetails(id);
             if (person == null)
             {
                 return HttpNotFound();
@@ -40,8 +45,7 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.OrganizationId = new SelectList(db.Organizations, "OrganizationId", "OrganizationCode");
-            ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "UserTypeName");
+
             return View();
         }
 
@@ -54,13 +58,12 @@ namespace NewCustomerIntegration.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.People.Add(person);
-                db.SaveChanges();
+                this.service.PersonCreate(person);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.OrganizationId = new SelectList(db.Organizations, "OrganizationId", "OrganizationCode", person.OrganizationId);
-            ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "UserTypeName", person.UserTypeId);
+            ViewBag.OrganizationId = this.service.PersonWriteOrganizationIDKey(person);
+            ViewBag.UserTypeId = this.service.PersonWriteUserTypeIDKey(person);
             return View(person);
         }
 
@@ -69,13 +72,13 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Edit(long id = 0)
         {
-            Person person = db.People.Find(id);
+            Person person = this.service.PersonEdit(id);
             if (person == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.OrganizationId = new SelectList(db.Organizations, "OrganizationId", "OrganizationCode", person.OrganizationId);
-            ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "UserTypeName", person.UserTypeId);
+            ViewBag.OrganizationId = this.service.PersonWriteOrganizationIDKey(person);
+            ViewBag.UserTypeId = this.service.PersonWriteUserTypeIDKey(person);
             return View(person);
         }
 
@@ -88,12 +91,11 @@ namespace NewCustomerIntegration.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(person).State = EntityState.Modified;
-                db.SaveChanges();
+                this.service.PersonEdit(person);
                 return RedirectToAction("Index");
             }
-            ViewBag.OrganizationId = new SelectList(db.Organizations, "OrganizationId", "OrganizationCode", person.OrganizationId);
-            ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "UserTypeName", person.UserTypeId);
+            ViewBag.OrganizationId = this.service.PersonWriteOrganizationIDKey(person);
+            ViewBag.UserTypeId = this.service.PersonWriteUserTypeIDKey(person);
             return View(person);
         }
 
@@ -102,7 +104,7 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Delete(long id = 0)
         {
-            Person person = db.People.Find(id);
+            Person person = this.service.PersonDelete(id);
             if (person == null)
             {
                 return HttpNotFound();
@@ -117,15 +119,13 @@ namespace NewCustomerIntegration.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            Person person = db.People.Find(id);
-            db.People.Remove(person);
-            db.SaveChanges();
+            this.service.PersonDeleteConfirmed(id);
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            this.service.PeopleDispose(disposing);
             base.Dispose(disposing);
         }
     }
