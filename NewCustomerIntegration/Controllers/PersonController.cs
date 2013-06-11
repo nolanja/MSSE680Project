@@ -45,7 +45,8 @@ namespace NewCustomerIntegration.Controllers
 
         public ActionResult Create()
         {
-
+            ViewBag.OrganizationId = this.service.PersonCreateOrganizationIDKey();
+            ViewBag.UserTypeId = this.service.PersonCreateUserTypeIDKey();
             return View();
         }
 
