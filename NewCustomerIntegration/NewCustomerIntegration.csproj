@@ -210,6 +210,7 @@
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="Controllers\UserTypeController.cs" />
+    <Compile Include="Factories\NewCustomerIntegrationFactory.cs" />
     <Compile Include="Factories\UnityControllerFactory.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
@@ -219,14 +220,15 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\AddressService.cs" />
-    <Compile Include="Services\INewCustomerService.cs" />
-    <Compile Include="Services\OrganizationService.cs" />
-    <Compile Include="Services\PersonService.cs" />
-    <Compile Include="Services\RuleService.cs" />
-    <Compile Include="Services\SiteService.cs" />
-    <Compile Include="Services\SiteTypeService.cs" />
-    <Compile Include="Services\UserTypeService.cs" />
+    <Compile Include="Services\AddressSvcMVCImpl.cs" />
+    <Compile Include="Services\INewCustomerSvcInterface.cs" />
+    <Compile Include="Services\IService.cs" />
+    <Compile Include="Services\OrganizationSvcMVCImpl.cs" />
+    <Compile Include="Services\PersonSvcMVCImpl.cs" />
+    <Compile Include="Services\RuleSvcMVCImpl.cs" />
+    <Compile Include="Services\SiteSvcMVCImpl.cs" />
+    <Compile Include="Services\SiteTypeSvcMVCImpl.cs" />
+    <Compile Include="Services\UserTypeSvcMVCImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\animated-overlay.gif" />

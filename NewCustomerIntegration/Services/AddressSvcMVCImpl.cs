@@ -5,14 +5,37 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
+using System.Collections;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using NewCustomerIntegration.Services;
 using NewCustomerIntegration.Domain.Models;
 
 namespace NewCustomerIntegration.Services
 {
-    public class AddressService : INewCustomerAddressService
+    public class AddressSvcMVCImpl : INewCustomerAddressService 
     {
         DBIntegrationContext customerDB = new DBIntegrationContext();
+
+        public void StoreAddresses(Address addresses)
+        {
+            FileStream fileStream = new FileStream
+                ("Address.bin", FileMode.Create, FileAccess.Write);
+            IFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(fileStream, addresses);
+            fileStream.Close();
+        }
+
+        public ArrayList RetrieveAddresses()
+        {
+            FileStream fileStream = new FileStream
+                ("Address.bin", FileMode.Open, FileAccess.Read);
+            IFormatter formatter = new BinaryFormatter();
+            ArrayList addresses = formatter.Deserialize(fileStream) as ArrayList;
+            fileStream.Close();
+            return addresses;
+        } 
 
         public IList<Address> GetAddresses()
         {

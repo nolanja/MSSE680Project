@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace NewCustomerIntegration.Domain.Models
 {
+    [Serializable]
     public partial class SiteType
     {
         public SiteType()

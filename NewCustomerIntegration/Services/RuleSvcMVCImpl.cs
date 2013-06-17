@@ -5,14 +5,37 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
+using System.Collections;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using NewCustomerIntegration.Services;
 using NewCustomerIntegration.Domain.Models;
 
 namespace NewCustomerIntegration.Services
 {
-    public class RuleService : INewCustomerRuleService
+    public class RuleSvcMVCImpl  : INewCustomerRuleService 
     {
         DBIntegrationContext customerDB = new DBIntegrationContext();
+
+        public void StoreRules(NewCustomerIntegration.Domain.Models.Rule rules)
+        {
+            FileStream fileStream = new FileStream
+                ("Rules.bin", FileMode.Create, FileAccess.Write);
+            IFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(fileStream, rules);
+            fileStream.Close();
+        }
+
+        public ArrayList RetrieveRules()
+        {
+            FileStream fileStream = new FileStream
+                ("Rules.bin", FileMode.Open, FileAccess.Read);
+            IFormatter formatter = new BinaryFormatter();
+            ArrayList rules = formatter.Deserialize(fileStream) as ArrayList;
+            fileStream.Close();
+            return rules;
+        } 
 
         public IList<NewCustomerIntegration.Domain.Models.Rule> GetRules()
         {

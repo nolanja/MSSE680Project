@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace NewCustomerIntegration.Domain.Models
 {
+    [Serializable]
     public partial class Address
     {
         public long AddressId { get; set; }

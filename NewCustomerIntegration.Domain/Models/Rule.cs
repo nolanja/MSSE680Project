@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace NewCustomerIntegration.Domain.Models
 {
+    [Serializable]
     public partial class Rule
     {
         public long RuleId { get; set; }

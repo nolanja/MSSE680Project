@@ -7,25 +7,31 @@ using System.Web;
 using System.Web.Mvc;
 using NewCustomerIntegration.Services;
 using NewCustomerIntegration.Domain.Models;
+using NewCustomerIntegration.Factories;
 
 namespace NewCustomerIntegration.Controllers
 {
+
     public class OrganizationController : Controller
     {
         //private DBIntegrationContext db = new DBIntegrationContext();
+
         private INewCustomerOrganizationService service;
+
         public OrganizationController(INewCustomerOrganizationService service)
         {
             this.service = service;
         }
+        
         //
         // GET: /Organization/
 
         public ActionResult Index()
         {
             return View(this.service.GetOrganizationNames());
+            
         }
-
+        
         //
         // GET: /Organization/Details/5
 

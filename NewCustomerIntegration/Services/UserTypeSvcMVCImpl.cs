@@ -5,14 +5,37 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
+using System.Collections;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using NewCustomerIntegration.Services;
 using NewCustomerIntegration.Domain.Models;
 
 namespace NewCustomerIntegration.Services
 {
-    public class UserTypeService : INewCustomerUserTypeService
+    public class UserTypeSvcMVCImpl : INewCustomerUserTypeService 
     {
         DBIntegrationContext customerDB = new DBIntegrationContext();
+
+        public void StoreUserTypes(UserType userTypes)
+        {
+            FileStream fileStream = new FileStream
+                ("UserTypes.bin", FileMode.Create, FileAccess.Write);
+            IFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(fileStream, userTypes);
+            fileStream.Close();
+        }
+
+        public ArrayList RetrieveUserTypes()
+        {
+            FileStream fileStream = new FileStream
+                ("UserTypes.bin", FileMode.Open, FileAccess.Read);
+            IFormatter formatter = new BinaryFormatter();
+            ArrayList userTypes = formatter.Deserialize(fileStream) as ArrayList;
+            fileStream.Close();
+            return userTypes;
+        }
 
         public IList<UserType> GetUserTypes()
         {

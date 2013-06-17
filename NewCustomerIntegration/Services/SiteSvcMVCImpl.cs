@@ -5,14 +5,37 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
+using System.Collections;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using NewCustomerIntegration.Services;
 using NewCustomerIntegration.Domain.Models;
 
 namespace NewCustomerIntegration.Services
 {
-    public class SiteService : INewCustomerSiteService
+    public class SiteSvcMVCImpl : INewCustomerSiteService 
     {
         DBIntegrationContext customerDB = new DBIntegrationContext();
+
+        public void StoreSites(Site sites)
+        {
+            FileStream fileStream = new FileStream
+                ("Sites.bin", FileMode.Create, FileAccess.Write);
+            IFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(fileStream, sites);
+            fileStream.Close();
+        }
+
+        public ArrayList RetrieveSites()
+        {
+            FileStream fileStream = new FileStream
+                ("Sites.bin", FileMode.Open, FileAccess.Read);
+            IFormatter formatter = new BinaryFormatter();
+            ArrayList sites = formatter.Deserialize(fileStream) as ArrayList;
+            fileStream.Close();
+            return sites;
+        } 
 
         public IList<Site> GetSites()
         {
