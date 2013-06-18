@@ -386,6 +386,7 @@
     <Content Include="Views\Rule\Create.cshtml" />
     <Content Include="Views\Rule\Edit.cshtml" />
     <Content Include="Views\Rule\Delete.cshtml" />
+    <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

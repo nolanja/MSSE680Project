@@ -11,6 +11,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using NewCustomerIntegration.Services;
 using NewCustomerIntegration.Domain.Models;
+using NewCustomerIntegration.Factories;
 
 namespace NewCustomerIntegration.Services
 {
@@ -20,90 +21,202 @@ namespace NewCustomerIntegration.Services
 
             public void StorePeople(Person people)
             {
-                FileStream fileStream = new FileStream
-                    ("People.bin", FileMode.Create, FileAccess.Write);
-                IFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(fileStream, people);
-                fileStream.Close();
+                try
+                {
+                    FileStream fileStream = new FileStream
+                ("People.bin", FileMode.Create, FileAccess.Write);
+                    IFormatter formatter = new BinaryFormatter();
+                    formatter.Serialize(fileStream, people);
+                    fileStream.Close();
+                }
+                catch (IOException e)
+                {
+                    
+                    throw new IOException("Unable to open People.bin " + e.GetType().Name);
+                }
             }
 
             public ArrayList RetrievePeople()
             {
-                FileStream fileStream = new FileStream
-                    ("People.bin", FileMode.Open, FileAccess.Read);
-                IFormatter formatter = new BinaryFormatter();
-                ArrayList people = formatter.Deserialize(fileStream) as ArrayList;
-                fileStream.Close();
-                return people;
+                try
+                {
+                    FileStream fileStream = new FileStream
+                ("People.bin", FileMode.Open, FileAccess.Read);
+                    IFormatter formatter = new BinaryFormatter();
+                    ArrayList people = formatter.Deserialize(fileStream) as ArrayList;
+                    fileStream.Close();
+                    return people;
+                }
+                catch (FileNotFoundException e)
+                {
+
+                    throw new FileNotFoundException("Unable to find People.bin " + e.GetType().Name);
+                }
             } 
 
             public IList<Person> GetPeople()
             {
-                var people = customerDB.People.Include(p => p.Organization).Include(p => p.UserType);
-
-                return people.ToList();
+                try
+                {
+                    var people = customerDB.People.Include(p => p.Organization).Include(p => p.UserType);
+                    return people.ToList();
+                }
+                catch (IOException e)
+                {
+                    
+                    throw new IOException("Unable to create list of people " + e.GetType().Name);
+                }
             }
 
             public Person PersonDetails(long id)
             {
-                return this.customerDB.People.Find(id);
+                try
+                {
+                    return this.customerDB.People.Find(id);
+                }
+                catch (IOException e)
+                {
+                    
+                    throw new IOException("Unable to find " + id.ToString() + e.GetType().Name);
+                }
             }
 
             public dynamic PersonCreateOrganizationIDKey()
             {
-                var organizationID = new SelectList(customerDB.Organizations, "OrganizationId", "OrganizationCode");
-                return organizationID; 
+                try
+                {
+                    var organizationID = new SelectList(customerDB.Organizations, "OrganizationId", "OrganizationCode");
+                    return organizationID;
+                }
+                catch (IOException e)
+                {
+                    
+                    throw new IOException("Unable to create Organization ID key " + e.GetType().Name);
+                }
             }
 
             public dynamic PersonCreateUserTypeIDKey()
             {
-                var userTypeID = new SelectList(customerDB.UserTypes, "UserTypeId", "UserTypeName");
-                return userTypeID;
+                try
+                {
+                    var userTypeID = new SelectList(customerDB.UserTypes, "UserTypeId", "UserTypeName");
+                    return userTypeID;
+                }
+                catch (IOException e)
+                {
+                    
+                    throw new IOException("Unable to create User Type ID key " + e.GetType().Name);
+                }
             }
 
             public dynamic PersonWriteOrganizationIDKey(Person person)
             {
-                var organizationID = new SelectList(customerDB.Organizations, "OrganizationId", "OrganizationCode", person.OrganizationId);
-                return organizationID;
+                try
+                {
+                    var organizationID = new SelectList(customerDB.Organizations, "OrganizationId", "OrganizationCode", person.OrganizationId);
+                    return organizationID;
+                }
+                catch (IOException e)
+                {
+                    
+                    throw new IOException("Unable to write Organzation ID key " + e.GetType().Name);
+                }
             }
 
             public dynamic PersonWriteUserTypeIDKey(Person person)
             {
-                var userTypeID = new SelectList(customerDB.UserTypes, "UserTypeId", "UserTypeName", person.UserTypeId);
-                return userTypeID;                
+                try
+                {
+                    var userTypeID = new SelectList(customerDB.UserTypes, "UserTypeId", "UserTypeName", person.UserTypeId);
+                    return userTypeID;
+                }
+                catch (IOException e)
+                {
+                    
+                    throw new IOException("Unable to write User Type ID key " + e.GetType().Name);
+                }               
             }
             public void PersonCreate(Person person)
             {
-                this.customerDB.People.Add(person);
-                this.customerDB.SaveChanges();
+                try
+                {
+                    this.customerDB.People.Add(person);
+                    this.customerDB.SaveChanges();
+                }
+                catch (IOException e)
+                {
+                    
+                    throw new IOException("Unable to add new person " + e.GetType().Name);
+                }
             }
 
             public Person PersonEdit(long id)
             {
-                return this.customerDB.People.Find(id);
+                try
+                {
+                    return this.customerDB.People.Find(id);
+                }
+                catch (IOException e)
+                {
+                    
+                    throw new IOException("Unable to find person " + id.ToString() + e.GetType().Name);
+                }
             }
 
             public void PersonEdit(Person person)
             {
-                this.customerDB.Entry(person).State = EntityState.Modified;
-                this.customerDB.SaveChanges();
+                try
+                {
+                    this.customerDB.Entry(person).State = EntityState.Modified;
+                    this.customerDB.SaveChanges();
+                }
+                catch (IOException e)
+                {
+
+                    throw new IOException("Cannot edit person " + e.GetType().Name);
+                }
             }
 
             public Person PersonDelete(long id)
             {
-                return this.customerDB.People.Find(id);
+                try
+                {
+                    return this.customerDB.People.Find(id);
+                }
+                catch (IOException e)
+                {
+                    
+                    throw new IOException("Unable to find " + id.ToString() + e.GetType().Name);
+                }
             }
 
             public void PersonDeleteConfirmed(long id)
             {
-                var people = this.customerDB.People.Find(id);
-                this.customerDB.People.Remove(people);
-                this.customerDB.SaveChanges();
-            }
+                try
+                {
+                    var people = this.customerDB.People.Find(id);
+                    this.customerDB.People.Remove(people);
+                    this.customerDB.SaveChanges();
+                }
+                catch (IOException e)
+                {
+                    
+                    throw new IOException("Unable to remove person " + e.GetType().Name);
+                }
+
+            }                    
 
             public void PeopleDispose(bool disposing)
             {
-                this.customerDB.Dispose();
+                try
+                {
+                    this.customerDB.Dispose();
+                }
+                catch (IOException e)
+                {
+                    
+                    throw new IOException("Unable to dispose of file " + e.GetType().Name);
+                }
             }
         }
     

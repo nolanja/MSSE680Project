@@ -11,6 +11,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using NewCustomerIntegration.Services;
 using NewCustomerIntegration.Domain.Models;
+using NewCustomerIntegration.Factories;
 
 namespace NewCustomerIntegration.Services
 {
@@ -20,68 +21,148 @@ namespace NewCustomerIntegration.Services
 
         public void StoreSiteTypes(SiteType siteTypes)
         {
-            FileStream fileStream = new FileStream
-                ("SiteTypes.bin", FileMode.Create, FileAccess.Write);
-            IFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(fileStream, siteTypes);
-            fileStream.Close();
+            try
+            {
+                FileStream fileStream = new FileStream
+            ("SiteTypes.bin", FileMode.Create, FileAccess.Write);
+                IFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(fileStream, siteTypes);
+                fileStream.Close();
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to create file SiteTypes.bin " + e.GetType().Name);
+            }
         }
 
         public ArrayList RetrieveSiteTypes()
         {
-            FileStream fileStream = new FileStream
-                ("SiteTypes.bin", FileMode.Open, FileAccess.Read);
-            IFormatter formatter = new BinaryFormatter();
-            ArrayList siteTypes = formatter.Deserialize(fileStream) as ArrayList;
-            fileStream.Close();
-            return siteTypes;
+            try
+            {
+                FileStream fileStream = new FileStream
+            ("SiteTypes.bin", FileMode.Open, FileAccess.Read);
+                IFormatter formatter = new BinaryFormatter();
+                ArrayList siteTypes = formatter.Deserialize(fileStream) as ArrayList;
+                fileStream.Close();
+                return siteTypes;
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to read file SiteTypes.bin" + e.GetType().Name);
+            }
         }
 
 
         public IList<SiteType> GetSiteTypes()
         {
-            var sitetypes = customerDB.SiteTypes;
+            try
+            {
+                var sitetypes = customerDB.SiteTypes;
 
-            return sitetypes.ToList();
+                return sitetypes.ToList();
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to list sites " + e.GetType().Name);
+            }
         }
 
         public SiteType SiteTypeDetails(long id)
         {
-            return this.customerDB.SiteTypes.Find(id);
+            try
+            {
+                return this.customerDB.SiteTypes.Find(id);
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to find site type " + id.ToString() + e.GetType().Name);
+            }
         }
 
         public void SiteTypeCreate(SiteType sitetype)
         {
-            this.customerDB.SiteTypes.Add(sitetype);
-            this.customerDB.SaveChanges();
+            try
+            {
+                this.customerDB.SiteTypes.Add(sitetype);
+                this.customerDB.SaveChanges();
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to create SiteType " + e.GetType().Name);
+            }
         }
 
         public SiteType SiteTypeEdit(long id)
         {
-            return this.customerDB.SiteTypes.Find(id);
+            try
+            {
+                return this.customerDB.SiteTypes.Find(id);
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to find Site Type ID " + id.ToString() + e.GetType().Name);
+            }
         }
 
         public void SiteTypeEdit(SiteType sitetype)
         {
-            this.customerDB.Entry(sitetype).State = EntityState.Modified;
-            this.customerDB.SaveChanges();
+            try
+            {
+                this.customerDB.Entry(sitetype).State = EntityState.Modified;
+                this.customerDB.SaveChanges();
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to edit Site Type " + e.GetType().Name);
+            }
         }
 
         public SiteType SiteTypeDelete(long id)
         {
-            return this.customerDB.SiteTypes.Find(id);
+            try
+            {
+                return this.customerDB.SiteTypes.Find(id);
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to find Site Type ID " + id.ToString() + e.GetType().Name);
+            }
         }
 
         public void SiteTypeDeleteConfirmed(long id)
         {
-            var sitetype = this.customerDB.SiteTypes.Find(id);
-            this.customerDB.SiteTypes.Remove(sitetype);
-            this.customerDB.SaveChanges();
+            try
+            {
+                var sitetype = this.customerDB.SiteTypes.Find(id);
+                this.customerDB.SiteTypes.Remove(sitetype);
+                this.customerDB.SaveChanges();
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to remove Site Type " + id.ToString() + e.GetType().Name);
+            }
         }
 
         public void SiteTypeDispose(bool disposing)
         {
-            this.customerDB.Dispose();
+            try
+            {
+                this.customerDB.Dispose();
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to dispose of Site Type " + e.GetType().Name);
+            }
         }
     }
 }

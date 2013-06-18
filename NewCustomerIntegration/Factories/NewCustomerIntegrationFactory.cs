@@ -5,47 +5,85 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using System.Web.Routing;
+using System.Configuration;
 using NewCustomerIntegration.Domain.Models;
 using NewCustomerIntegration.Controllers;
 using NewCustomerIntegration.Services;
+using System.Collections.Specialized;
+using System.Reflection;
 
 namespace NewCustomerIntegration.Factories
 {
     public class NewCustomerIntegrationFactory
     {
-        public INewCustomerAddressService GetAddressSvc()
+        private NewCustomerIntegrationFactory()
         {
-            return new AddressSvcMVCImpl();
         }
 
-        public INewCustomerOrganizationService GetOrganizationSvc()
+        private static NewCustomerIntegrationFactory factory = new NewCustomerIntegrationFactory();
+        public static NewCustomerIntegrationFactory GetInstance()
         {
-            return new OrganizationSvcMVCImpl();
+            return factory;
         }
 
-        public INewCustomerPersonService GetPersonSvc()
+        public IService GetService(String serviceName)
         {
-            return new PersonSvcMVCImpl();
+            Type type;
+            Object obj = null;
+
+            try
+            {
+                type = Type.GetType(GetImplName(serviceName));
+                obj = Activator.CreateInstance(type);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Exception occured: {0}", e);
+            }
+            return (IService) obj;
         }
 
-        public INewCustomerRuleService GetRuleSvc()
+        private string GetImplName(string serviceName)
         {
-            return new RuleSvcMVCImpl();
+            NameValueCollection settings = ConfigurationManager.AppSettings;
+            return settings.Get(serviceName);
         }
 
-        public INewCustomerSiteService GetSiteSvc()
-        {
-            return new SiteSvcMVCImpl();
-        }
+        //public INewCustomerAddressService GetAddressSvc()
+        //{
+        //    return new AddressSvcMVCImpl();
+        //}
 
-        public INewCustomerSiteTypeService GetSiteTypeSvc()
-        {
-            return new SiteTypeSvcMVCImpl();
-        }
+        //public INewCustomerOrganizationService GetOrganizationSvc()
+        //{
+        //    return new OrganizationSvcMVCImpl();
+        //}
 
-        public INewCustomerUserTypeService GetUserTypeSvc()
-        {
-            return new UserTypeSvcMVCImpl();
-        }
+        //public INewCustomerPersonService GetPersonSvc()
+        //{
+        //    return new PersonSvcMVCImpl();
+        //}
+
+        //public INewCustomerRuleService GetRuleSvc()
+        //{
+        //    return new RuleSvcMVCImpl();
+        //}
+
+        //public INewCustomerSiteService GetSiteSvc()
+        //{
+        //    return new SiteSvcMVCImpl();
+        //}
+
+        //public INewCustomerSiteTypeService GetSiteTypeSvc()
+        //{
+        //    return new SiteTypeSvcMVCImpl();
+        //}
+
+        //public INewCustomerUserTypeService GetUserTypeSvc()
+        //{
+        //    return new UserTypeSvcMVCImpl();
+        //}
+
+        
     }
 }

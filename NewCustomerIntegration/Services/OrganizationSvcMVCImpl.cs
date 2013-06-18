@@ -11,6 +11,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using NewCustomerIntegration.Services;
 using NewCustomerIntegration.Domain.Models;
+using NewCustomerIntegration.Factories;
 
 namespace NewCustomerIntegration.Services
 {
@@ -20,21 +21,38 @@ namespace NewCustomerIntegration.Services
 
          public void StoreOrganizations(Organization organization)
          {
-             FileStream fileStream = new FileStream
-                 ("Organizations.bin", FileMode.Create, FileAccess.Write);
-             IFormatter formatter = new BinaryFormatter();
+             try
+             {
+                 FileStream fileStream = new FileStream
+             ("Organizations.bin", FileMode.Create, FileAccess.Write);
+                 IFormatter formatter = new BinaryFormatter();
              formatter.Serialize(fileStream, organization);
              fileStream.Close();
+             }
+             catch (IOException e)
+             {
+                 
+                 throw new IOException("Unable to create file Organizations.bin " + e.GetType().Name);
+             }
+
          }
 
          public ArrayList RetrieveOrganizations()
          {
-             FileStream fileStream = new FileStream
-                 ("Organizations.bin", FileMode.Open, FileAccess.Read);
-             IFormatter formatter = new BinaryFormatter();
-             ArrayList organizations = formatter.Deserialize(fileStream) as ArrayList;
-             fileStream.Close();
-             return organizations;
+             try
+             {
+                 FileStream fileStream = new FileStream
+             ("Organizations.bin", FileMode.Open, FileAccess.Read);
+                 IFormatter formatter = new BinaryFormatter();
+                 ArrayList organizations = formatter.Deserialize(fileStream) as ArrayList;
+                 fileStream.Close();
+                 return organizations;
+             }
+             catch (FileNotFoundException e)
+             {
+                 
+                 throw new FileNotFoundException("Unable to open Organizations.bin " + e.GetType().Name);
+             }
          } 
         
         public IList<Organization> GetOrganizationNames()
@@ -45,7 +63,15 @@ namespace NewCustomerIntegration.Services
 
          public Organization OrganizationDetails(long id)
          {
-             return this.customerDB.Organizations.Find(id);
+             try
+             {
+                 return this.customerDB.Organizations.Find(id);
+             }
+             catch (IOException e)
+             {
+                 throw new IOException("Unable to find Organization" + e.GetType().Name);
+             }
+             
          }
              
         public void OrganizationCreate(Organization organization)
@@ -57,7 +83,7 @@ namespace NewCustomerIntegration.Services
             }
             catch (IOException e)
             {
-                Console.WriteLine("unable to add organization to database", e.GetType().Name);
+                throw new IOException("unable to add organization to database" + e.GetType().Name);
             }
             
         }
@@ -76,7 +102,7 @@ namespace NewCustomerIntegration.Services
             }
             catch (IOException e)
             {
-                Console.WriteLine("unable to add organization to database", e.GetType().Name);
+                throw new IOException("unable to add organization to database" + e.GetType().Name);
 
             }
         }
@@ -95,15 +121,34 @@ namespace NewCustomerIntegration.Services
             }
             catch (IOException e)
             {
-                Console.WriteLine("unable to find " + id.ToString() + " in organizations database", e.GetType().Name);
+                throw new IOException("unable to remove " + id.ToString() + " in organizations database "+ e.GetType().Name);
 
-            }         
-            this.customerDB.SaveChanges();
+            }
+
+            try
+            {
+                this.customerDB.SaveChanges();
+            }
+            catch
+            {
+                throw new IOException("unable to write customer file ");
+            }
+            
         }
 
         public void OrganizationDispose(bool disposing)
         {
-            this.customerDB.Dispose();
+            try
+            {
+                this.customerDB.Dispose();
+            }
+            catch (FileNotFoundException e)
+            {
+                throw new FileNotFoundException("unable to find file " + e.GetType().Name);
+            }
+
+
+            
         }
 
         

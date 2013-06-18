@@ -10,10 +10,13 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using NewCustomerIntegration.Filters;
 using NewCustomerIntegration.Models;
+using NewCustomerIntegration.Factories;
+using NewCustomerIntegration.Services;
 
 namespace NewCustomerIntegration.Services
 {
     public interface IService
     {
+        
     }
 }

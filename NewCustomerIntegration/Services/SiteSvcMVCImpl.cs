@@ -11,6 +11,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using NewCustomerIntegration.Services;
 using NewCustomerIntegration.Domain.Models;
+using NewCustomerIntegration.Factories;
 
 namespace NewCustomerIntegration.Services
 {
@@ -20,90 +21,201 @@ namespace NewCustomerIntegration.Services
 
         public void StoreSites(Site sites)
         {
-            FileStream fileStream = new FileStream
-                ("Sites.bin", FileMode.Create, FileAccess.Write);
-            IFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(fileStream, sites);
-            fileStream.Close();
+            try
+            {
+                FileStream fileStream = new FileStream
+            ("Sites.bin", FileMode.Create, FileAccess.Write);
+                IFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(fileStream, sites);
+                fileStream.Close();
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to create Sites.bin " + e.GetType().Name);
+            }
         }
 
         public ArrayList RetrieveSites()
         {
-            FileStream fileStream = new FileStream
-                ("Sites.bin", FileMode.Open, FileAccess.Read);
-            IFormatter formatter = new BinaryFormatter();
-            ArrayList sites = formatter.Deserialize(fileStream) as ArrayList;
-            fileStream.Close();
-            return sites;
+            try
+            {
+                FileStream fileStream = new FileStream
+            ("Sites.bin", FileMode.Open, FileAccess.Read);
+                IFormatter formatter = new BinaryFormatter();
+                ArrayList sites = formatter.Deserialize(fileStream) as ArrayList;
+                fileStream.Close();
+                return sites;
+            }
+            catch (FileNotFoundException e)
+            {
+                
+                throw new FileNotFoundException("Unable to open file Sites.bin " + e.GetType().Name);
+            }
         } 
 
         public IList<Site> GetSites()
         {
-            var sites = customerDB.Sites.Include(s => s.Organization).Include(s => s.SiteType);
-
-            return sites.ToList();
+            try
+            {
+                var sites = customerDB.Sites.Include(s => s.Organization).Include(s => s.SiteType);
+                return sites.ToList();
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to list sites " + e.GetType().Name);
+            }
         }
 
         public Site SiteDetails(long id)
         {
-            return this.customerDB.Sites.Find(id);
+            try
+            {
+                return this.customerDB.Sites.Find(id);
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to find " + id.ToString() + e.GetType().Name);
+            }
         }
 
         public dynamic SiteCreateOrganizationIDKey()
         {
-            var organizationID = new SelectList(customerDB.Organizations, "OrganizationId", "OrganizationCode");
-            return organizationID;
+            try
+            {
+                var organizationID = new SelectList(customerDB.Organizations, "OrganizationId", "OrganizationCode");
+                return organizationID;
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to create Organization ID key " + e.GetType().Name);
+            }
         }
 
         public dynamic SiteCreateSiteTypeIDKey()
         {
-            var siteTypeID = new SelectList(customerDB.SiteTypes, "SiteTypeId", "SiteTypeName");
-            return siteTypeID;
+            try
+            {
+                var siteTypeID = new SelectList(customerDB.SiteTypes, "SiteTypeId", "SiteTypeName");
+                return siteTypeID;
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to create Site Type ID key " + e.GetType().Name);
+            }
         }
 
         public dynamic SiteWriteOrganizationIDKey(Site site)
         {
-            var organizationID = new SelectList(customerDB.Organizations, "OrganizationId", "OrganizationCode", site.OrganizationId);
-            return organizationID;
+            try
+            {
+                var organizationID = new SelectList(customerDB.Organizations, "OrganizationId", "OrganizationCode", site.OrganizationId);
+                return organizationID;
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to write Organization ID key " + e.GetType().Name);
+            }
         }
 
         public dynamic SiteWriteSiteTypeIDKey(Site site)
         {
-            var siteTypeID = new SelectList(customerDB.SiteTypes, "UserTypeId", "UserTypeName", site.SiteTypeId);
-            return siteTypeID;
+            try
+            {
+                var siteTypeID = new SelectList(customerDB.SiteTypes, "UserTypeId", "UserTypeName", site.SiteTypeId);
+                return siteTypeID;
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to write Site Type ID key " + e.GetType().Name);
+            }
         }
         public void SiteCreate(Site site)
         {
-            this.customerDB.Sites.Add(site);
-            this.customerDB.SaveChanges();
+            try
+            {
+                this.customerDB.Sites.Add(site);
+                this.customerDB.SaveChanges();
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to create site " + e.GetType().Name);
+            }
         }
 
         public Site SiteEdit(long id)
         {
-            return this.customerDB.Sites.Find(id);
+            try
+            {
+                return this.customerDB.Sites.Find(id);
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to find site " + id.ToString() + e.GetType().Name);
+            }
         }
 
         public void SiteEdit(Site site)
         {
-            this.customerDB.Entry(site).State = EntityState.Modified;
-            this.customerDB.SaveChanges();
+            try
+            {
+                this.customerDB.Entry(site).State = EntityState.Modified;
+                this.customerDB.SaveChanges();
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to Edit site " + e.GetType().Name);
+            }
         }
 
         public Site SiteDelete(long id)
         {
-            return this.customerDB.Sites.Find(id);
+            try
+            {
+                return this.customerDB.Sites.Find(id);
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to find " + id.ToString() + e.GetType().Name);
+            }
         }
 
         public void SiteDeleteConfirmed(long id)
         {
-            var site = this.customerDB.Sites.Find(id);
-            this.customerDB.Sites.Remove(site);
-            this.customerDB.SaveChanges();
+            try
+            {
+                var site = this.customerDB.Sites.Find(id);
+                this.customerDB.Sites.Remove(site);
+                this.customerDB.SaveChanges();
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to remove stite " + id.ToString() + e.GetType().Name);
+            }
         }
 
         public void SiteDispose(bool disposing)
         {
-            this.customerDB.Dispose();
+            try
+            {
+                this.customerDB.Dispose();
+            }
+            catch (IOException e)
+            {
+                
+                throw new IOException("Unable to dispose of file" + e.GetType().Name);
+            }
         }
     }
 }
