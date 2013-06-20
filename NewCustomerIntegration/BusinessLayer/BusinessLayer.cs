@@ -11,15 +11,15 @@ namespace NewCustomerIntegration.BusinessLayer
 {
     public class BusinessLayer
     {
-        public class OrganizationManagement
+        public class OrganizationManagement : Manager
         {
             public void OrganizationListNames()
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
+                
                 try
                 {
                     INewCustomerOrganizationService orgSvc =
-                        (INewCustomerOrganizationService)factory.GetService(typeof(INewCustomerOrganizationService).Name);
+                        (INewCustomerOrganizationService)GetService(typeof(INewCustomerOrganizationService).Name);
                     orgSvc.GetOrganizationNames();
                 }
                 catch (Exception e)
@@ -30,11 +30,11 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void OrganizationDetails(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
+                
                 try
                 {
                     INewCustomerOrganizationService orgSvc =
-                        (INewCustomerOrganizationService)factory.GetService(typeof(INewCustomerOrganizationService).Name);
+                        (INewCustomerOrganizationService)GetService(typeof(INewCustomerOrganizationService).Name);
                     orgSvc.OrganizationDetails(id);
                 }
                 catch (Exception e)
@@ -45,11 +45,11 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void OrganizationCreate(Organization organization)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
+ 
                 try
                 {
                     INewCustomerOrganizationService orgSvc =
-                        (INewCustomerOrganizationService)factory.GetService(typeof(INewCustomerOrganizationService).Name);
+                        (INewCustomerOrganizationService)GetService(typeof(INewCustomerOrganizationService).Name);
                     orgSvc.OrganizationCreate(organization);
                 }
                 catch (Exception e)
@@ -60,11 +60,11 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void OrganizationEdit(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
+
                 try
                 {
                     INewCustomerOrganizationService orgSvc =
-                        (INewCustomerOrganizationService)factory.GetService(typeof(INewCustomerOrganizationService).Name);
+                        (INewCustomerOrganizationService)GetService(typeof(INewCustomerOrganizationService).Name);
                     orgSvc.OrganizationEdit(id);
                 }
                 catch (Exception e)
@@ -75,11 +75,11 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void OrganizationEdit(Organization organization)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
+
                 try
                 {
                     INewCustomerOrganizationService orgSvc =
-                        (INewCustomerOrganizationService)factory.GetService(typeof(INewCustomerOrganizationService).Name);
+                        (INewCustomerOrganizationService)GetService(typeof(INewCustomerOrganizationService).Name);
                     orgSvc.OrganizationEdit(organization);
                 }
                 catch (Exception e)
@@ -90,11 +90,11 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void OrganizationDelete(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
+
                 try
                 {
                     INewCustomerOrganizationService orgSvc =
-                        (INewCustomerOrganizationService)factory.GetService(typeof(INewCustomerOrganizationService).Name);
+                        (INewCustomerOrganizationService)GetService(typeof(INewCustomerOrganizationService).Name);
                     orgSvc.OrganizationDelete(id);
                 }
                 catch (Exception e)
@@ -105,11 +105,11 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void OrganizationDeleteConfirmed(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
+
                 try
                 {
                     INewCustomerOrganizationService orgSvc =
-                        (INewCustomerOrganizationService)factory.GetService(typeof(INewCustomerOrganizationService).Name);
+                        (INewCustomerOrganizationService)GetService(typeof(INewCustomerOrganizationService).Name);
                     orgSvc.OrganizationDeleteConfirmed(id);
                 }
                 catch (Exception e)
@@ -120,11 +120,11 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void OrganizationDispose(bool disposing)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
+
                 try
                 {
                     INewCustomerOrganizationService orgSvc =
-                        (INewCustomerOrganizationService)factory.GetService(typeof(INewCustomerOrganizationService).Name);
+                        (INewCustomerOrganizationService)GetService(typeof(INewCustomerOrganizationService).Name);
                     orgSvc.OrganizationDispose(disposing);
                 }
                 catch (Exception e)
@@ -135,15 +135,15 @@ namespace NewCustomerIntegration.BusinessLayer
 
         }
 
-        public class AddressManagement
+        public class AddressManagement : Manager
         {
             public void ListAddresses()
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
+
                 try
                 {
                     INewCustomerAddressService addSvc =
-                        (INewCustomerAddressService)factory.GetService(typeof(INewCustomerAddressService).Name);
+                        (INewCustomerAddressService)GetService(typeof(INewCustomerAddressService).Name);
                     addSvc.GetAddresses();
                 }
                 catch (Exception e)
@@ -154,11 +154,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void AddressDetails(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerAddressService addSvc =
-                        (INewCustomerAddressService)factory.GetService(typeof(INewCustomerAddressService).Name);
+                        (INewCustomerAddressService)GetService(typeof(INewCustomerAddressService).Name);
                     addSvc.AddressDetails(id);
                 }
                 catch (Exception e)
@@ -169,11 +168,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void AddressCreate()
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerAddressService addSvc =
-                        (INewCustomerAddressService)factory.GetService(typeof(INewCustomerAddressService).Name);
+                        (INewCustomerAddressService)GetService(typeof(INewCustomerAddressService).Name);
                     addSvc.AddressCreateSiteKey();
                 }
                 catch (Exception e)
@@ -184,11 +182,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void AddressCreate(Address address)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerAddressService addSvc =
-                        (INewCustomerAddressService)factory.GetService(typeof(INewCustomerAddressService).Name);
+                        (INewCustomerAddressService)GetService(typeof(INewCustomerAddressService).Name);
                     addSvc.AddressCreateSiteKey();
                     addSvc.AddressCreate(address);
                     addSvc.AddressWriteSiteKey(address);
@@ -201,11 +198,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void AddressEdit(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerAddressService addSvc =
-                        (INewCustomerAddressService)factory.GetService(typeof(INewCustomerAddressService).Name);
+                        (INewCustomerAddressService)GetService(typeof(INewCustomerAddressService).Name);
                     addSvc.AddressEdit(id);
 
                 }
@@ -217,11 +213,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void AddressEdit(Address address)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerAddressService addSvc =
-                        (INewCustomerAddressService)factory.GetService(typeof(INewCustomerAddressService).Name);
+                        (INewCustomerAddressService)GetService(typeof(INewCustomerAddressService).Name);
                     addSvc.AddressEdit(address);
                     addSvc.AddressWriteSiteKey(address);
 
@@ -234,11 +229,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void AddressDelete(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerAddressService addSvc =
-                        (INewCustomerAddressService)factory.GetService(typeof(INewCustomerAddressService).Name);
+                        (INewCustomerAddressService)GetService(typeof(INewCustomerAddressService).Name);
                     addSvc.AddressDelete(id);
 
                 }
@@ -250,11 +244,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void AddressDeleteConfirmed(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerAddressService addSvc =
-                        (INewCustomerAddressService)factory.GetService(typeof(INewCustomerAddressService).Name);
+                        (INewCustomerAddressService)GetService(typeof(INewCustomerAddressService).Name);
                     addSvc.AddressDeleteConfirmed(id);
 
                 }
@@ -266,11 +259,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void AddressDispose(bool dispose)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerAddressService addSvc =
-                        (INewCustomerAddressService)factory.GetService(typeof(INewCustomerAddressService).Name);
+                        (INewCustomerAddressService)GetService(typeof(INewCustomerAddressService).Name);
                     addSvc.AddressDispose (dispose);
 
                 }
@@ -282,15 +274,14 @@ namespace NewCustomerIntegration.BusinessLayer
 
         }
 
-        public class PeopleManagement
+        public class PeopleManagement : Manager
         {
             public void ListPeople()
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerPersonService personSvc =
-                        (INewCustomerPersonService)factory.GetService(typeof(INewCustomerPersonService).Name);
+                        (INewCustomerPersonService)GetService(typeof(INewCustomerPersonService).Name);
                     personSvc.GetPeople();
                 }
                 catch (Exception e)
@@ -301,11 +292,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void PersonDetails(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerPersonService personSvc =
-                        (INewCustomerPersonService)factory.GetService(typeof(INewCustomerPersonService).Name);
+                        (INewCustomerPersonService)GetService(typeof(INewCustomerPersonService).Name);
                     personSvc.PersonDetails(id);
                 }
                 catch (Exception e)
@@ -316,11 +306,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void PersonCreate()
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerPersonService personSvc =
-                        (INewCustomerPersonService)factory.GetService(typeof(INewCustomerPersonService).Name);
+                        (INewCustomerPersonService)GetService(typeof(INewCustomerPersonService).Name);
                     personSvc.PersonCreateOrganizationIDKey();
                     personSvc.PersonCreateUserTypeIDKey();
                 }
@@ -332,11 +321,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void PersonCreate(Person person)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerPersonService personSvc =
-                        (INewCustomerPersonService)factory.GetService(typeof(INewCustomerPersonService).Name);
+                        (INewCustomerPersonService)GetService(typeof(INewCustomerPersonService).Name);
                     personSvc.PersonCreate(person);
                     //personSvc.PersonWriteOrganizationIDKey(person);
                     //personSvc.PersonWriteUserTypeIDKey(person);
@@ -349,11 +337,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void PersonEdit(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerPersonService personSvc =
-                        (INewCustomerPersonService)factory.GetService(typeof(INewCustomerPersonService).Name);
+                        (INewCustomerPersonService)GetService(typeof(INewCustomerPersonService).Name);
                     Person person = personSvc.PersonEdit(id);
                     personSvc.PersonWriteOrganizationIDKey(person);
                     personSvc.PersonWriteUserTypeIDKey(person);
@@ -366,11 +353,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void PersonEdit(Person person)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerPersonService personSvc =
-                        (INewCustomerPersonService)factory.GetService(typeof(INewCustomerPersonService).Name);
+                        (INewCustomerPersonService)GetService(typeof(INewCustomerPersonService).Name);
                     personSvc.PersonEdit(person);
                 }
                 catch (Exception e)
@@ -381,11 +367,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void PersonDelete(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerPersonService personSvc =
-                        (INewCustomerPersonService)factory.GetService(typeof(INewCustomerPersonService).Name);
+                        (INewCustomerPersonService)GetService(typeof(INewCustomerPersonService).Name);
                     personSvc.PersonDelete(id);
 
                 }
@@ -397,11 +382,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void PersonDeleteConfirmed(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerPersonService personSvc =
-                        (INewCustomerPersonService)factory.GetService(typeof(INewCustomerPersonService).Name);
+                        (INewCustomerPersonService)GetService(typeof(INewCustomerPersonService).Name);
                     personSvc.PersonDeleteConfirmed(id);
 
                 }
@@ -413,11 +397,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void PersonDispose(bool dispose)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerPersonService personSvc =
-                        (INewCustomerPersonService)factory.GetService(typeof(INewCustomerPersonService).Name);
+                        (INewCustomerPersonService)GetService(typeof(INewCustomerPersonService).Name);
                     personSvc.PeopleDispose(dispose);
 
                 }
@@ -428,15 +411,14 @@ namespace NewCustomerIntegration.BusinessLayer
             }
         }
 
-        public class SiteManagement
+        public class SiteManagement : Manager
         {
             public void SiteCreate(Site site)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerSiteService siteSvc =
-                        (INewCustomerSiteService) factory.GetService(typeof(INewCustomerSiteService).Name);
+                        (INewCustomerSiteService)GetService(typeof(INewCustomerSiteService).Name);
                     siteSvc.SiteCreateOrganizationIDKey();
                     siteSvc.SiteCreateSiteTypeIDKey();
                     siteSvc.SiteCreate(site);
@@ -451,11 +433,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void SiteEdit(Site site)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerSiteService siteSvc =
-                        (INewCustomerSiteService)factory.GetService(typeof(INewCustomerSiteService).Name);
+                        (INewCustomerSiteService)GetService(typeof(INewCustomerSiteService).Name);
                     siteSvc.SiteCreateOrganizationIDKey();
                     siteSvc.SiteCreateSiteTypeIDKey();
                     siteSvc.SiteEdit(site);
@@ -470,11 +451,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void SiteList()
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerSiteService siteSvc =
-                        (INewCustomerSiteService)factory.GetService(typeof(INewCustomerSiteService).Name);
+                        (INewCustomerSiteService)GetService(typeof(INewCustomerSiteService).Name);
                     siteSvc.GetSites();
                 }
                 catch (Exception e)
@@ -485,11 +465,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void SiteDelete(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerSiteService siteSvc =
-                        (INewCustomerSiteService)factory.GetService(typeof(INewCustomerSiteService).Name);
+                        (INewCustomerSiteService)GetService(typeof(INewCustomerSiteService).Name);
                     siteSvc.SiteDelete(id);
 
                 }
@@ -501,11 +480,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void SiteDeleteConfirm(long id)
             {
-                                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerSiteService siteSvc =
-                        (INewCustomerSiteService)factory.GetService(typeof(INewCustomerSiteService).Name);
+                        (INewCustomerSiteService)GetService(typeof(INewCustomerSiteService).Name);
                     siteSvc.SiteDeleteConfirmed(id);
 
                 }
@@ -517,11 +495,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void SiteDipose(bool disposing)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerSiteService siteSvc =
-                        (INewCustomerSiteService)factory.GetService(typeof(INewCustomerSiteService).Name);
+                        (INewCustomerSiteService)GetService(typeof(INewCustomerSiteService).Name);
                     siteSvc.SiteDispose(disposing);
 
                 }
@@ -533,15 +510,14 @@ namespace NewCustomerIntegration.BusinessLayer
 
         }
 
-        public class SiteTypeManagement
+        public class SiteTypeManagement : Manager
         {
             public void ListSiteTypes()
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerSiteTypeService siteTypeSvc =
-                        (INewCustomerSiteTypeService)factory.GetService(typeof(INewCustomerSiteTypeService).Name);
+                        (INewCustomerSiteTypeService)GetService(typeof(INewCustomerSiteTypeService).Name);
                     siteTypeSvc.GetSiteTypes();
                 }
                 catch (Exception e)
@@ -552,11 +528,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void SiteTypeDetails(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerSiteTypeService siteTypeSvc =
-                        (INewCustomerSiteTypeService)factory.GetService(typeof(INewCustomerSiteTypeService).Name);
+                        (INewCustomerSiteTypeService)GetService(typeof(INewCustomerSiteTypeService).Name);
                     siteTypeSvc.SiteTypeDetails(id);
                 }
                 catch (Exception e)
@@ -567,11 +542,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void SiteTypeCreate(SiteType siteType)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerSiteTypeService siteTypeSvc =
-                        (INewCustomerSiteTypeService) factory.GetService(typeof (INewCustomerSiteTypeService).Name);
+                        (INewCustomerSiteTypeService)GetService(typeof (INewCustomerSiteTypeService).Name);
                     siteTypeSvc.SiteTypeCreate(siteType);
                 }
                 catch (Exception e)
@@ -582,11 +556,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void SiteTypeEdit(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerSiteTypeService siteTypeSvc =
-                        (INewCustomerSiteTypeService)factory.GetService(typeof(INewCustomerSiteTypeService).Name);
+                        (INewCustomerSiteTypeService)GetService(typeof(INewCustomerSiteTypeService).Name);
                     siteTypeSvc.SiteTypeEdit(id);
                 }
                 catch (Exception e)
@@ -597,11 +570,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void SiteTypeEdit(SiteType siteType)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerSiteTypeService siteTypeSvc =
-                        (INewCustomerSiteTypeService)factory.GetService(typeof(INewCustomerSiteTypeService).Name);
+                        (INewCustomerSiteTypeService)GetService(typeof(INewCustomerSiteTypeService).Name);
                     siteTypeSvc.SiteTypeEdit(siteType);
                 }
                 catch (Exception e)
@@ -612,11 +584,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void SiteTypeDelete(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerSiteTypeService siteTypeSvc =
-                        (INewCustomerSiteTypeService)factory.GetService(typeof(INewCustomerSiteTypeService).Name);
+                        (INewCustomerSiteTypeService)GetService(typeof(INewCustomerSiteTypeService).Name);
                     siteTypeSvc.SiteTypeDelete(id);
                 }
                 catch (Exception e)
@@ -627,11 +598,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void SiteTypeDeleteConfirmed(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerSiteTypeService siteTypeSvc =
-                        (INewCustomerSiteTypeService)factory.GetService(typeof(INewCustomerSiteTypeService).Name);
+                        (INewCustomerSiteTypeService)GetService(typeof(INewCustomerSiteTypeService).Name);
                     siteTypeSvc.SiteTypeDeleteConfirmed(id);
                 }
                 catch (Exception e)
@@ -642,11 +612,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void SiteTypeDispose(bool disposing)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerSiteTypeService siteTypeSvc =
-                        (INewCustomerSiteTypeService)factory.GetService(typeof(INewCustomerSiteTypeService).Name);
+                        (INewCustomerSiteTypeService)GetService(typeof(INewCustomerSiteTypeService).Name);
                     siteTypeSvc.SiteTypeDispose(disposing);
                 }
                 catch (Exception e)
@@ -656,15 +625,14 @@ namespace NewCustomerIntegration.BusinessLayer
             }
         }
 
-        public class UserTypeManagement
+        public class UserTypeManagement : Manager
         {
             public void ListUserTypes()
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerUserTypeService userTypeSvc =
-                        (INewCustomerUserTypeService)factory.GetService(typeof(INewCustomerUserTypeService).Name);
+                        (INewCustomerUserTypeService)GetService(typeof(INewCustomerUserTypeService).Name);
                     userTypeSvc.GetUserTypes();
                 }
                 catch (Exception e)
@@ -675,11 +643,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void UserTypeDetails(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerUserTypeService userTypeSvc =
-                        (INewCustomerUserTypeService)factory.GetService(typeof(INewCustomerUserTypeService).Name);
+                        (INewCustomerUserTypeService)GetService(typeof(INewCustomerUserTypeService).Name);
                     userTypeSvc.UserTypeDetails(id);
                 }
                 catch (Exception e)
@@ -690,11 +657,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void UserTypeCreate(UserType userType)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerUserTypeService userTypeSvc =
-                        (INewCustomerUserTypeService)factory.GetService(typeof(INewCustomerUserTypeService).Name);
+                        (INewCustomerUserTypeService)GetService(typeof(INewCustomerUserTypeService).Name);
                     userTypeSvc.UserTypeCreate(userType);
                 }
                 catch (Exception e)
@@ -705,11 +671,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void UserTypeEdit(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerUserTypeService userTypeSvc =
-                        (INewCustomerUserTypeService)factory.GetService(typeof(INewCustomerUserTypeService).Name);
+                        (INewCustomerUserTypeService)GetService(typeof(INewCustomerUserTypeService).Name);
                     userTypeSvc.UserTypeEdit(id);
                 }
                 catch (Exception e)
@@ -720,11 +685,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void UserTypeEdit(UserType userType)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerUserTypeService userTypeSvc =
-                        (INewCustomerUserTypeService)factory.GetService(typeof(INewCustomerUserTypeService).Name);
+                        (INewCustomerUserTypeService)GetService(typeof(INewCustomerUserTypeService).Name);
                     userTypeSvc.UserTypeEdit(userType);
                 }
                 catch (Exception e)
@@ -735,11 +699,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void UserTypeDelete(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerUserTypeService userTypeSvc =
-                        (INewCustomerUserTypeService)factory.GetService(typeof(INewCustomerUserTypeService).Name);
+                        (INewCustomerUserTypeService)GetService(typeof(INewCustomerUserTypeService).Name);
                     userTypeSvc.UserTypeDelete(id);
                 }
                 catch (Exception e)
@@ -750,11 +713,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void UserTypeDeleteConfirmed(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerUserTypeService userTypeSvc =
-                        (INewCustomerUserTypeService)factory.GetService(typeof(INewCustomerUserTypeService).Name);
+                        (INewCustomerUserTypeService)GetService(typeof(INewCustomerUserTypeService).Name);
                     userTypeSvc.UserTypeDeleteConfirmed(id);
                 }
                 catch (Exception e)
@@ -765,11 +727,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void UserTypeDispose(bool disposing)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerUserTypeService userTypeSvc =
-                        (INewCustomerUserTypeService)factory.GetService(typeof(INewCustomerUserTypeService).Name);
+                        (INewCustomerUserTypeService)GetService(typeof(INewCustomerUserTypeService).Name);
                     userTypeSvc.UserTypeDispose(disposing);
                 }
                 catch (Exception e)
@@ -779,15 +740,14 @@ namespace NewCustomerIntegration.BusinessLayer
             }
         }
 
-        public class RuleManagement
+        public class RuleManagement : Manager
         {
             public void ListRules()
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerRuleService ruleSvc =
-                        (INewCustomerRuleService)factory.GetService(typeof(INewCustomerRuleService).Name);
+                        (INewCustomerRuleService)GetService(typeof(INewCustomerRuleService).Name);
                     ruleSvc.GetRules();
                 }
                 catch (Exception e)
@@ -797,11 +757,10 @@ namespace NewCustomerIntegration.BusinessLayer
             }
             public void RuleDetails(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerRuleService ruleSvc =
-                        (INewCustomerRuleService)factory.GetService(typeof(INewCustomerRuleService).Name);
+                        (INewCustomerRuleService)GetService(typeof(INewCustomerRuleService).Name);
                     ruleSvc.RuleDetails(id);
                 }
                 catch (Exception e)
@@ -812,11 +771,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void RuleCreate(Rule rule)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerRuleService ruleSvc =
-                        (INewCustomerRuleService)factory.GetService(typeof(INewCustomerRuleService).Name);
+                        (INewCustomerRuleService)GetService(typeof(INewCustomerRuleService).Name);
                     ruleSvc.RuleCreate(rule);
                 }
                 catch (Exception e)
@@ -827,11 +785,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void RuleEdit(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerRuleService ruleSvc =
-                        (INewCustomerRuleService)factory.GetService(typeof(INewCustomerRuleService).Name);
+                        (INewCustomerRuleService)GetService(typeof(INewCustomerRuleService).Name);
                     ruleSvc.RuleEdit(id);
                 }
                 catch (Exception e)
@@ -842,11 +799,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void RuleEdit(Rule rule)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerRuleService ruleSvc =
-                        (INewCustomerRuleService)factory.GetService(typeof(INewCustomerRuleService).Name);
+                        (INewCustomerRuleService)GetService(typeof(INewCustomerRuleService).Name);
                     ruleSvc.RuleEdit(rule);
                 }
                 catch (Exception e)
@@ -857,11 +813,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void RuleDelete(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerRuleService ruleSvc =
-                        (INewCustomerRuleService)factory.GetService(typeof(INewCustomerRuleService).Name);
+                        (INewCustomerRuleService)GetService(typeof(INewCustomerRuleService).Name);
                     ruleSvc.RuleDelete(id);
                 }
                 catch (Exception e)
@@ -872,11 +827,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void RuleDeleteConfirmed(long id)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerRuleService ruleSvc =
-                        (INewCustomerRuleService)factory.GetService(typeof(INewCustomerRuleService).Name);
+                        (INewCustomerRuleService)GetService(typeof(INewCustomerRuleService).Name);
                     ruleSvc.RuleDeleteConfirmed(id);
                 }
                 catch (Exception e)
@@ -887,11 +841,10 @@ namespace NewCustomerIntegration.BusinessLayer
 
             public void RuleDispose(bool disposing)
             {
-                NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
                 try
                 {
                     INewCustomerRuleService ruleSvc =
-                        (INewCustomerRuleService)factory.GetService(typeof(INewCustomerRuleService).Name);
+                        (INewCustomerRuleService)GetService(typeof(INewCustomerRuleService).Name);
                     ruleSvc.RuleDispose(disposing);
                 }
                 catch (Exception e)
