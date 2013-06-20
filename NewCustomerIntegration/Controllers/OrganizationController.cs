@@ -14,7 +14,6 @@ namespace NewCustomerIntegration.Controllers
 
     public class OrganizationController : Controller
     {
-        //private DBIntegrationContext db = new DBIntegrationContext();
 
         private INewCustomerOrganizationService service;
 
@@ -47,7 +46,7 @@ namespace NewCustomerIntegration.Controllers
 
         //
         // GET: /Organization/Create
-
+        
         public ActionResult Create()
         {
             return View();

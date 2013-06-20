@@ -30,9 +30,9 @@ namespace NewCustomerIntegration
             AuthConfig.RegisterAuth();
             var container = new UnityContainer();
                 container.RegisterType<INewCustomerAddressService, AddressSvcMVCImpl>();
-                container.RegisterType<IController, AddressController>("Address", new ContainerControlledLifetimeManager());
+                container.RegisterType<IController, AddressController>("Address");
                 container.RegisterType<INewCustomerOrganizationService, OrganizationSvcMVCImpl>();
-                container.RegisterType<IController, OrganizationController>("Organization", new ContainerControlledLifetimeManager());
+                container.RegisterType<IController, OrganizationController>("Organization");
                 container.RegisterType<INewCustomerPersonService, PersonSvcMVCImpl>();
                 container.RegisterType<IController, PersonController>("Person");
                 container.RegisterType<INewCustomerRuleService, RuleSvcMVCImpl>();

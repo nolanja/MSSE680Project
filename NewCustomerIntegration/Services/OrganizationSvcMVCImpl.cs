@@ -147,11 +147,7 @@ namespace NewCustomerIntegration.Services
                 throw new FileNotFoundException("unable to find file " + e.GetType().Name);
             }
 
-
-            
         }
 
-        
-        
     }
 }
