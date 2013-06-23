@@ -200,8 +200,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="BusinessLayer\BusinessLayer.cs" />
+    <Compile Include="BusinessLayer\AddressManager.cs" />
     <Compile Include="BusinessLayer\Manager.cs" />
+    <Compile Include="BusinessLayer\OrganizationManager.cs" />
+    <Compile Include="BusinessLayer\PeopleManager.cs" />
+    <Compile Include="BusinessLayer\RuleManager.cs" />
+    <Compile Include="BusinessLayer\SiteManager.cs" />
+    <Compile Include="BusinessLayer\SiteTypeManager.cs" />
+    <Compile Include="BusinessLayer\UserTypeManager.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\RuleController.cs" />

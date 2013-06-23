@@ -26,7 +26,7 @@ namespace NewCustomerIntegration.Factories
             return factory;
         }
 
-        public IService GetService(String serviceName)
+        public IService GetService(String serviceName,params object[] args)
         {
             Type type;
             Object obj = null;
@@ -34,7 +34,7 @@ namespace NewCustomerIntegration.Factories
             try
             {
                 type = Type.GetType(GetImplName(serviceName));
-                obj = Activator.CreateInstance(type);
+                obj = Activator.CreateInstance(type, args);
             }
             catch (Exception e)
             {

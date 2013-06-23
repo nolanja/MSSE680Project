@@ -13,9 +13,9 @@ namespace NewCustomerIntegration.BusinessLayer
     {
         private NewCustomerIntegrationFactory factory = NewCustomerIntegrationFactory.GetInstance();
 
-        protected IService GetService(String name)
+        protected IService GetService(String name, params object[] args)
         {
-            return factory.GetService(name);
+            return factory.GetService(name, args);
         }
     }
 }
