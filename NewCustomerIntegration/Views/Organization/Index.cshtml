@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    //Layout = null;
 }
 
 <h2>Index</h2>
@@ -12,43 +13,22 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.OrganizationCode)
+            @Html.DisplayName("Organization Code")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OrganizationName)
+            @Html.DisplayName("Name")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            @Html.DisplayName("Phone Number")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FaxNumber)
+            @Html.DisplayName("Fax Number")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ParentOrganizationCode)
+            @Html.DisplayName("Parent Code")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Theme)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Skin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Active)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DELETED)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedDateTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedDateTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedBy)
+            @Html.DisplayName("Active")
         </th>
         <th></th>
     </tr>
@@ -71,28 +51,7 @@
             @Html.DisplayFor(modelItem => item.ParentOrganizationCode)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Theme)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Skin)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Active)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DELETED)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedDateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedBy)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.OrganizationId }) |

@@ -12,25 +12,13 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ValueTypeId)
+            @Html.DisplayName("Type ID")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RuleName)
+            @Html.DisplayName("Rule Name")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RuleDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedDateTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedDateTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedBy)
+            @Html.DisplayName("Description")
         </th>
         <th></th>
     </tr>
@@ -45,18 +33,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.RuleDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedDateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedBy)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.RuleId }) |

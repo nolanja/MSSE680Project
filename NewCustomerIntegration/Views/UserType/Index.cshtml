@@ -12,20 +12,9 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UserTypeName)
+            @Html.DisplayName("User Type")
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedDateTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedDateTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedBy)
-        </th>
+
         <th></th>
     </tr>
 
@@ -33,18 +22,6 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.UserTypeName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedDateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedBy)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.UserTypeId }) |

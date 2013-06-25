@@ -63,6 +63,8 @@ h4, h5, h6 {
     color: #000;
     margin-bottom: 0;
     padding-bottom: 0;
+    margin-right: 4px;
+
 }
 
 h1 {
@@ -532,13 +534,14 @@ table {
     border-spacing: 0;
     margin-top: 0.75em;
     border: 0 none;
+    
 }
 
 th {
     font-size: 1.2em;
-    text-align: left;
+    text-align: center;
     border: none 0px;
-    padding-left: 0;
+    padding-right: 20px;
 }
 
     th a {
@@ -550,7 +553,7 @@ th {
         color: #333;
         font-weight: 600;
         text-decoration: none;
-        padding: 0;
+        
     }
 
     th a:hover {

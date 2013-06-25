@@ -12,19 +12,7 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.SiteTypeName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedDateTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedDateTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedBy)
+            @Html.DisplayName("Site Type")
         </th>
         <th></th>
     </tr>
@@ -33,18 +21,6 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.SiteTypeName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedDateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedBy)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.SiteTypeId }) |
