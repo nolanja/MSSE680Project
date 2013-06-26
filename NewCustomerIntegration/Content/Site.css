@@ -92,34 +92,28 @@ h5, h6 {
         text-decoration: none;
     }
 
-DIV#options {
-    float: left;
-    width: 8em;
-    padding: .3em;
-}
 
 /* main layout
 ----------------------------------------------------------*/
 .content-wrapper {
+
     margin-left: 10em;
     max-width: 960px;
-    border-left: 5px solid red;
+    
 }
 
 #body {
     background-color: #efeeef;
     clear: both;
     padding-bottom: 35px;
-    margin-left: 10em;
-    border-left: 5px solid blue;
+
+
 }
 
     .main-content {
         background: url("../Images/accent.png") no-repeat;
-        padding-left: 10px;
         padding-top: 30px;
-        margin-left: 10em;
-        
+       
     }
 
     .featured + .main-content {
@@ -127,6 +121,7 @@ DIV#options {
     }
 
 header .content-wrapper {
+    background: url(".../Images/ITNlogo.jpg") no-repeat;
     padding-top: 20px; 
 }
 
@@ -139,9 +134,11 @@ footer {
 }
 
 
+
 /* site title
 ----------------------------------------------------------*/
 .site-title {
+    
     color: #c8c8c8;
     font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
     font-size: 2.3em;
@@ -149,12 +146,10 @@ footer {
 }
 
 .site-title a, .site-title a:hover, .site-title a:active {
-    background: none;
     color: #c8c8c8;
     outline: none;
     text-decoration: none;
 }
-
 
 /* login
 ----------------------------------------------------------*/
