@@ -11,17 +11,13 @@
     </head>
     <body>
         <header>
-            <div id ="site-logo">
-                <img src = "../Images/ITNlogo.jpg" height="75" width="300"/>
-            </div>
+            <div class="title-align">New Customer Integration</div>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title">@Html.ActionLink( "New Customer Integration", "Index", "Home" )</p>
+                    <p  class="site-title">@Html.ActionLink(" ", "Index", "Home", null, new { @Class = "site-logo" }) </p>
                 </div>
                 <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
+                    <p><br/></p>
                     <nav>
                         <ul id="menu">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
@@ -43,7 +39,7 @@
         <footer>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - Customer Integration</p>
+                    <p>&copy; @DateTime.Now.Year - New Customer Integration</p>
                 </div>
             </div>
         </footer>

@@ -92,9 +92,13 @@ h5, h6 {
         text-decoration: none;
     }
 
-DIV#site-logo {
-    float: left;
+a.site-logo {
     
+    background: url("../Images/ITNlogo.jpg") no-repeat top left;
+    display: block;
+    width: 300px;
+    height: 75px;
+    text-indent: -10em;
 
 }
 /* main layout
@@ -125,7 +129,7 @@ DIV#site-logo {
     }
 
 header .content-wrapper {
-    background: url(".../Images/ITNlogo.jpg") no-repeat;
+    background: none;
     padding-top: 20px; 
 }
 
@@ -137,6 +141,15 @@ footer {
     height: 100px;
 }
 
+.title-align {
+
+    color: #999;
+    font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
+    font-size: 2em;
+    margin-left: .5em;
+    margin-bottom: -.75em;
+
+}
 
 
 /* site title
