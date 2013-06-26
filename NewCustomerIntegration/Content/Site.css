@@ -92,11 +92,15 @@ h5, h6 {
         text-decoration: none;
     }
 
+DIV#site-logo {
+    float: left;
+    
 
+}
 /* main layout
 ----------------------------------------------------------*/
 .content-wrapper {
-
+    background: none;
     margin-left: 10em;
     max-width: 960px;
     

@@ -11,6 +11,9 @@
     </head>
     <body>
         <header>
+            <div id ="site-logo">
+                <img src = "../Images/ITNlogo.jpg" height="75" width="300"/>
+            </div>
             <div class="content-wrapper">
                 <div class="float-left">
                     <p class="site-title">@Html.ActionLink( "New Customer Integration", "Index", "Home" )</p>
@@ -31,10 +34,7 @@
         </header>
 
         <div id="body">
-            <div id ="options">
-                List of options that can be <br />
-                performed on organizations
-            </div>  
+  
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
