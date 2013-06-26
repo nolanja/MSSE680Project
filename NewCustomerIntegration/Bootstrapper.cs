@@ -1,6 +1,7 @@
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using Unity.Mvc3;
+using NewCustomerIntegration.Services;
 
 namespace NewCustomerIntegration
 {
@@ -21,7 +22,13 @@ namespace NewCustomerIntegration
             // it is NOT necessary to register your controllers
             
             // e.g. container.RegisterType<ITestService, TestService>();            
-
+            container.RegisterType<INewCustomerAddressService, AddressSvcMVCImpl>();
+            container.RegisterType<INewCustomerOrganizationService, OrganizationSvcMVCImpl>();
+            container.RegisterType<INewCustomerPersonService, PersonSvcMVCImpl>();
+            container.RegisterType<INewCustomerRuleService, RuleSvcMVCImpl>();
+            container.RegisterType<INewCustomerSiteService, SiteSvcMVCImpl>();
+            container.RegisterType<INewCustomerSiteTypeService, SiteTypeSvcMVCImpl>();
+            container.RegisterType<INewCustomerUserTypeService, UserTypeSvcMVCImpl>();
             return container;
         }
     }
