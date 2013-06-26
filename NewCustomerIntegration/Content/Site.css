@@ -92,24 +92,34 @@ h5, h6 {
         text-decoration: none;
     }
 
+DIV#options {
+    float: left;
+    width: 8em;
+    padding: .3em;
+}
 
 /* main layout
 ----------------------------------------------------------*/
 .content-wrapper {
-    margin: 0 auto;
+    margin-left: 10em;
     max-width: 960px;
+    border-left: 5px solid red;
 }
 
 #body {
     background-color: #efeeef;
     clear: both;
     padding-bottom: 35px;
+    margin-left: 10em;
+    border-left: 5px solid blue;
 }
 
     .main-content {
         background: url("../Images/accent.png") no-repeat;
         padding-left: 10px;
         padding-top: 30px;
+        margin-left: 10em;
+        
     }
 
     .featured + .main-content {
@@ -119,6 +129,7 @@ h5, h6 {
 header .content-wrapper {
     padding-top: 20px; 
 }
+
 
 footer {
     clear: both;

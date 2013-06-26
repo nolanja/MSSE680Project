@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <title>@ViewBag.Title</title>
         <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
@@ -13,7 +13,7 @@
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
+                    <p class="site-title">@Html.ActionLink("New Customer Integration", "Index", "Home")</p>
                 </div>
                 <div class="float-right">
                     <section id="login">
@@ -29,16 +29,21 @@
                 </div>
             </div>
         </header>
+
         <div id="body">
-            @RenderSection("featured", required: false)
+            <div id ="options">
+                List of options that can be <br />
+                performed on organizations
+            </div>  
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
         </div>
+
         <footer>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+                    <p>&copy; @DateTime.Now.Year - Customer Integration</p>
                 </div>
             </div>
         </footer>

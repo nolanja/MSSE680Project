@@ -29,6 +29,7 @@ namespace NewCustomerIntegration
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
             var container = new UnityContainer();
+                container.RegisterType<IController, HomeController>("Home");
                 container.RegisterType<INewCustomerAddressService, AddressSvcMVCImpl>();
                 container.RegisterType<IController, AddressController>("Address");
                 container.RegisterType<INewCustomerOrganizationService, OrganizationSvcMVCImpl>();
