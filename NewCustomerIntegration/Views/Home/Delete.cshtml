@@ -1,0 +1,110 @@
+﻿@model NewCustomerIntegration.Domain.Models.Organization
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Organization</legend>
+
+    <div class="display-label">
+         @Html.DisplayName("Organization Code")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OrganizationCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayName("Organization Name")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OrganizationName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayName("Phone Number")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PhoneNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayName("Fax Number")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FaxNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayName("Parent Organization Code")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ParentOrganizationCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayName("Theme")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Theme)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayName("Skin")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Skin)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayName("Active")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Active)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayName("Deleted")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DELETED)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayName("Date Created")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedDateTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayName("Created By")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedBy)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayName("Date Modified")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ModifiedDateTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayName("Modified By")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ModifiedBy)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

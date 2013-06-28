@@ -143,7 +143,7 @@ footer {
 
 .title-align {
 
-    color: #999;
+    color: #e1b375;
     font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
     font-size: 2em;
     margin-left: .5em;
@@ -156,7 +156,7 @@ footer {
 ----------------------------------------------------------*/
 .site-title {
     
-    color: #c8c8c8;
+    color: #ffd300;
     font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
     font-size: 2.3em;
     margin: 0;

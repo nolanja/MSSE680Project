@@ -1,20 +1,22 @@
 ﻿@model NewCustomerIntegration.Domain.Models.Organization
 
 @{
-    ViewBag.Title = "Create New Organization";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Create Organization</h2>
+<h2>Edit Organizations</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Organization</legend>
+        <legend>Current Organization</legend>
+
+        @Html.Hidden("Organization ID")
 
         <div class="editor-label">
-            @Html.Label("Organization Code")
+            @Html.LabelFor(model => model.OrganizationCode)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.OrganizationCode)
@@ -22,7 +24,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.Label("Organization Name")
+            @Html.LabelFor(model => model.OrganizationName)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.OrganizationName)
@@ -30,7 +32,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.Label("Phone Number")
+            @Html.LabelFor(model => model.PhoneNumber)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.PhoneNumber)
@@ -38,7 +40,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.Label("Fax Number")
+            @Html.LabelFor(model => model.FaxNumber)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.FaxNumber)
@@ -46,7 +48,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.Label("Parent Oganization Code")
+            @Html.LabelFor(model => model.ParentOrganizationCode)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ParentOrganizationCode)
@@ -54,7 +56,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.Label("Model Theme")
+            @Html.LabelFor(model => model.Theme)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Theme)
@@ -62,7 +64,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.Label("Model Skin")
+            @Html.LabelFor(model => model.Skin)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Skin)
@@ -70,7 +72,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.Label("Active")
+            @Html.LabelFor(model => model.Active)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Active)
@@ -78,7 +80,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.Label("Deleted")
+            @Html.LabelFor(model => model.DELETED)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.DELETED)
@@ -86,7 +88,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.Label("Date Created")
+            @Html.LabelFor(model => model.CreatedDateTime)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.CreatedDateTime)
@@ -94,7 +96,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.Label("Created By")
+            @Html.LabelFor(model => model.CreatedBy)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.CreatedBy)
@@ -102,7 +104,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.Label("Date Modified")
+            @Html.LabelFor(model => model.ModifiedDateTime)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ModifiedDateTime)
@@ -110,7 +112,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.Label("Modified By")
+            @Html.LabelFor(model => model.ModifiedBy)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ModifiedBy)
@@ -118,7 +120,7 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Save" />
         </p>
     </fieldset>
 }
