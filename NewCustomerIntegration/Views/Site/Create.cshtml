@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Create Site</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -22,7 +22,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.SiteTypeId, "SiteType")
+            @Html.LabelFor(model => model.SiteTypeId, "Site Type")
         </div>
         <div class="editor-field">
             @Html.DropDownList("SiteTypeId", String.Empty)
@@ -30,7 +30,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.SiteName)
+            @Html.LabelFor(model => model.SiteName, "Site Name")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.SiteName)
@@ -38,7 +38,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.SiteCode)
+            @Html.LabelFor(model => model.SiteCode, "Site Code")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.SiteCode)
@@ -46,7 +46,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.TimeZoneId)
+            @Html.LabelFor(model => model.TimeZoneId, "Timezone ID")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.TimeZoneId)
@@ -54,7 +54,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.CreatedDateTime)
+            @Html.LabelFor(model => model.CreatedDateTime, "Date Created")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.CreatedDateTime)
@@ -62,7 +62,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.CreatedBy)
+            @Html.LabelFor(model => model.CreatedBy, "Created By")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.CreatedBy)
@@ -70,7 +70,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ModifiedDateTime)
+            @Html.LabelFor(model => model.ModifiedDateTime, "Date Modified")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ModifiedDateTime)
@@ -78,7 +78,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ModifiedBy)
+            @Html.LabelFor(model => model.ModifiedBy, "Modified By")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ModifiedBy)

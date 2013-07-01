@@ -127,7 +127,7 @@ namespace NewCustomerIntegration.Services
         {
             try
             {
-                var siteTypeID = new SelectList(customerDB.SiteTypes, "UserTypeId", "UserTypeName", site.SiteTypeId);
+                var siteTypeID = new SelectList(customerDB.SiteTypes, "SiteTypeId", "SiteTypeName", site.SiteTypeId);
                 return siteTypeID;
             }
             catch (IOException e)

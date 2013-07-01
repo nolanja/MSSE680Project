@@ -11,9 +11,6 @@ namespace NewCustomerIntegration.Domain.Models.Mapping
             this.HasKey(t => t.UserTypeId);
 
             // Properties
-            this.Property(t => t.UserTypeId)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
             this.Property(t => t.UserTypeName)
                 .IsRequired()
                 .HasMaxLength(100);

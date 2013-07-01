@@ -22,7 +22,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.AddressTypeId)
+            @Html.LabelFor(model => model.AddressTypeId, "Address Type")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.AddressTypeId)
@@ -30,7 +30,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.AddressLine1)
+            @Html.LabelFor(model => model.AddressLine1, "To")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.AddressLine1)
@@ -38,7 +38,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.AddressLine2)
+            @Html.LabelFor(model => model.AddressLine2, "Street Address")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.AddressLine2)
@@ -46,7 +46,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.AddressLine3)
+            @Html.LabelFor(model => model.AddressLine3, "Suite / PO Box")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.AddressLine3)
@@ -54,7 +54,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.City)
+            @Html.LabelFor(model => model.City, "City")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.City)
@@ -62,7 +62,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.StateProvinceRegionId)
+            @Html.LabelFor(model => model.StateProvinceRegionId, "State / Provence")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.StateProvinceRegionId)
@@ -70,7 +70,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.PostalCode)
+            @Html.LabelFor(model => model.PostalCode, "Postal Code")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.PostalCode)
@@ -78,7 +78,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.CountryRegionId)
+            @Html.LabelFor(model => model.CountryRegionId, "Country")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.CountryRegionId)
@@ -86,7 +86,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.CreatedDateTime)
+            @Html.LabelFor(model => model.CreatedDateTime, "Date Created")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.CreatedDateTime)
@@ -94,7 +94,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.CreatedBy)
+            @Html.LabelFor(model => model.CreatedBy, "Created By")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.CreatedBy)
@@ -102,7 +102,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ModifiedDateTime)
+            @Html.LabelFor(model => model.ModifiedDateTime, "Date Modified")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ModifiedDateTime)
@@ -110,7 +110,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ModifiedBy)
+            @Html.LabelFor(model => model.ModifiedBy, "Modified By")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ModifiedBy)

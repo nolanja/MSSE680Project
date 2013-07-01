@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace NewCustomerIntegration.Domain.Models
 {
-    [Serializable]
     public partial class UserType
     {
         public UserType()

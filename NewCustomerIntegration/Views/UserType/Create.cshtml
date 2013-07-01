@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Create User Type</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -14,7 +14,7 @@
         <legend>UserType</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.UserTypeName)
+            @Html.LabelFor(model => model.UserTypeName, "User Type")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.UserTypeName)
@@ -22,7 +22,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.CreatedDateTime)
+            @Html.LabelFor(model => model.CreatedDateTime, "Date Created")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.CreatedDateTime)
@@ -30,7 +30,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.CreatedBy)
+            @Html.LabelFor(model => model.CreatedBy, "Created By")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.CreatedBy)
@@ -38,7 +38,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ModifiedDateTime)
+            @Html.LabelFor(model => model.ModifiedDateTime, "Date Modified")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ModifiedDateTime)
@@ -46,7 +46,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ModifiedBy)
+            @Html.LabelFor(model => model.ModifiedBy, "Modified By")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ModifiedBy)

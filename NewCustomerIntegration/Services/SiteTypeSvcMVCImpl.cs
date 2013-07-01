@@ -90,10 +90,10 @@ namespace NewCustomerIntegration.Services
                 this.customerDB.SiteTypes.Add(sitetype);
                 this.customerDB.SaveChanges();
             }
-            catch (IOException e)
+            catch (Exception e)
             {
                 
-                throw new IOException("Unable to create SiteType " + e.GetType().Name);
+                throw new Exception("Unable to create SiteType " + e.GetType().Name);
             }
         }
 

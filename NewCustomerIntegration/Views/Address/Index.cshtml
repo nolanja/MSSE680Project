@@ -4,16 +4,22 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Organizations Address List</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table>
     <tr>
+        
+        <th>
+            @Html.DisplayName("Organization")
+        </th>
+
         <th>
             @Html.DisplayName("Site Name")
         </th>
+
         <th>
             @Html.DisplayName("Address Type")
         </th>
@@ -21,23 +27,28 @@
         <th>
             @Html.DisplayName("City")
         </th>
+
         <th>
             @Html.DisplayName("State/Provence")
         </th>
+
         <th>
             @Html.DisplayName("Postal Code")
         </th>
-        <th>
-            @Html.DisplayName("Country")
-        </th>
+
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.Site.Organization.OrganizationName)
+        </td>
+
+        <td>
             @Html.DisplayFor(modelItem => item.Site.SiteName)
         </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.AddressTypeId)
         </td>
@@ -50,9 +61,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.PostalCode)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CountryRegionId)
-        </td>
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.AddressId }) |
             @Html.ActionLink("Details", "Details", new { id=item.AddressId }) |

@@ -4,17 +4,17 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Edit User</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Person</legend>
+        <legend>User</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.UserId)
+            @Html.LabelFor(model => model.UserId, "User ID")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.UserId)
@@ -38,7 +38,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.FirstName)
+            @Html.LabelFor(model => model.FirstName, "First Name")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.FirstName)
@@ -46,7 +46,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.LastName)
+            @Html.LabelFor(model => model.LastName, "Last Name")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.LastName)
@@ -54,7 +54,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.PhoneNumber)
+            @Html.LabelFor(model => model.PhoneNumber, "Phone Number")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.PhoneNumber)
@@ -62,7 +62,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.EmailAddress)
+            @Html.LabelFor(model => model.EmailAddress, "Email")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.EmailAddress)
@@ -70,7 +70,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.UnitName)
+            @Html.LabelFor(model => model.UnitName, "Unit Name")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.UnitName)
@@ -78,7 +78,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.UnitNumber)
+            @Html.LabelFor(model => model.UnitNumber, "Unit Number")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.UnitNumber)
@@ -86,7 +86,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Department)
+            @Html.LabelFor(model => model.Department, "Department")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Department)
@@ -94,7 +94,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.CreatedDateTime)
+            @Html.LabelFor(model => model.CreatedDateTime, "Date Created")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.CreatedDateTime)
@@ -102,7 +102,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.CreatedBy)
+            @Html.LabelFor(model => model.CreatedBy, "Created By")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.CreatedBy)
@@ -110,7 +110,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ModifiedDateTime)
+            @Html.LabelFor(model => model.ModifiedDateTime, "Date Modified")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ModifiedDateTime)
@@ -118,7 +118,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ModifiedBy)
+            @Html.LabelFor(model => model.ModifiedBy, "Modified By")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ModifiedBy)

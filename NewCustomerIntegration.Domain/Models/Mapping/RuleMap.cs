@@ -11,9 +11,6 @@ namespace NewCustomerIntegration.Domain.Models.Mapping
             this.HasKey(t => t.RuleId);
 
             // Properties
-            this.Property(t => t.RuleId)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
             this.Property(t => t.RuleName)
                 .IsRequired()
                 .HasMaxLength(50);

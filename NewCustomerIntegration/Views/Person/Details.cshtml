@@ -10,104 +10,104 @@
     <legend>Person</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.UserId)
+         @Html.DisplayName("User ID")
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.UserId)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Organization.OrganizationCode)
+         @Html.DisplayName("Organization Code")
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Organization.OrganizationCode)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.UserType.UserTypeName)
+         @Html.DisplayName("User Type")
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.UserType.UserTypeName)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.FirstName)
+         @Html.DisplayName("First Name")
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.FirstName)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.LastName)
+         @Html.DisplayName("Last Name")
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.LastName)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.PhoneNumber)
+         @Html.DisplayName("Phone Number")
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.PhoneNumber)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.EmailAddress)
+         @Html.DisplayName("Email")
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.EmailAddress)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.UnitName)
+         @Html.DisplayName("Unit Name")
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.UnitName)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.UnitNumber)
+         @Html.DisplayName("Unit Number")
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.UnitNumber)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Department)
+         @Html.DisplayName("Department")
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Department)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.CreatedDateTime)
+         @Html.DisplayName("Date Created")
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.CreatedDateTime)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.CreatedBy)
+         @Html.DisplayName("Created By")
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.CreatedBy)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ModifiedDateTime)
+         @Html.DisplayName("Date Modified")
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.ModifiedDateTime)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ModifiedBy)
+         @Html.DisplayName("Modified By")
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.ModifiedBy)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id=Model.UserId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
